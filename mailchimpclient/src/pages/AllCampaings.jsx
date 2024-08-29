@@ -4,46 +4,58 @@ import "../styles/AllCompaings.css";
 import axios from "axios";
 const AllCampaings = () => {
   const [allcomapings, setAllComapings] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleourhidPages = () => {
-    navigate("/hidepages")
-  }
+    navigate("/hidepages");
+  };
   useEffect(() => {
     const fetchAllcompaings = async () => {
       try {
-        setLoading(true)
-        const allComaingsdata = await axios.get("https://mailchimp-server.vercel.app/api/newcompaing")
-        setAllComapings(allComaingsdata.data)
-        setLoading(false)
-        console.log(allComaingsdata)
+        setLoading(true);
+        //https://latest-mail-chimp-server.vercel.app/
+        const allComaingsdata = await axios.get(
+          "https://latest-mail-chimp-server.vercel.app/api/newcompaing"
+        );
+        setAllComapings(allComaingsdata.data);
+        setLoading(false);
+        console.log(allComaingsdata);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchAllcompaings()
-  }, [])
+    };
+    fetchAllcompaings();
+  }, []);
   const handleEditClick = (id) => {
-    navigate(`/editcompaing/${id}`)
-  }
+    navigate(`/editcompaing/${id}`);
+  };
   useEffect(() => {
     const fetchAllcompaings = async () => {
       try {
-        setLoading(true)
-        const allComaingsdata = await axios.get("https://mailchimp-server.vercel.app/api/newcompaing")
-        setAllComapings(allComaingsdata.data)
-        setLoading(false)
-        console.log(allComaingsdata)
+        setLoading(true);
+        const allComaingsdata = await axios.get(
+          "https://latest-mail-chimp-server.vercel.app/api/newcompaing"
+        );
+        setAllComapings(allComaingsdata.data);
+        setLoading(false);
+        console.log(allComaingsdata);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchAllcompaings()
-  }, [])
+    };
+    fetchAllcompaings();
+  }, []);
   const formatDate = (dateString) => {
-    const options = { weekday: 'short', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    const options = {
+      weekday: "short",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString("en-US", options);
   };
   return (
     <div>
@@ -412,15 +424,16 @@ const AllCampaings = () => {
                                   data-analytics-tag="SecondaryNav-All contacts"
                                   className="snipcss0-13-110-115"
                                 >
-                                  <Link to="/allcontacts"
-                                    className="root-2MzAS fullHeight-2grW3 snipcss0-14-71-72">
+                                  <Link
+                                    to="/allcontacts"
+                                    className="root-2MzAS fullHeight-2grW3 snipcss0-14-71-72"
+                                  >
                                     <div className="snipcss0-15-116-117">
                                       <span className="snipcss0-16-117-118">
                                         All contacts
                                       </span>
                                     </div>
                                   </Link>
-
                                 </li>
                                 <li
                                   data-analytics-tag="SecondaryNav-Signup forms"
@@ -603,14 +616,12 @@ const AllCampaings = () => {
                                     to="/reports"
                                     className="root-2MzAS fullHeight-2grW3 snipcss0-14-71-72"
                                   >
-
                                     <div className="snipcss0-15-162-163">
                                       <span className="snipcss0-16-163-164">
                                         Reports
                                       </span>
                                     </div>
                                   </Link>
-
                                 </li>
                                 <li
                                   data-analytics-tag="SecondaryNav-Custom reports"
@@ -930,7 +941,8 @@ const AllCampaings = () => {
                 <ul className="stack-1qp4V spacing1-2v2JO root-3AJ2b supportButtons-1wLtK snipcss0-5-239-240">
                   <li className="snipcss0-6-240-241">
                     <div className="root-2SOqc snipcss0-7-241-242">
-                      <button onClick={handleourhidPages}
+                      <button
+                        onClick={handleourhidPages}
                         className="root-1khsy helpMenuButton-10MYH snipcss0-8-242-243"
                         id="mc:38"
                         aria-expanded="false"
@@ -967,7 +979,9 @@ const AllCampaings = () => {
                     <button
                       style={{ backgroundColor: "#1b8a95", color: "white" }}
                     >
-                      <Link style={{ color: 'unset' }} to="/newcomaping">Create new</Link>
+                      <Link style={{ color: "unset" }} to="/newcomaping">
+                        Create new
+                      </Link>
                     </button>
                   </div>{" "}
                 </div>
@@ -983,8 +997,8 @@ const AllCampaings = () => {
                   <p style={{ fontSize: "20px", color: "#241c60" }}>
                     Your aduience has{" "}
                     <span style={{ color: "#007c89 " }}> 50,000</span> contacts.
-                    <span style={{ color: "#007c89 " }}> 48,795</span> fo these are
-                    subscribers.
+                    <span style={{ color: "#007c89 " }}> 48,795</span> fo these
+                    are subscribers.
                   </p>
                 </div>
                 <div class="">
@@ -1242,55 +1256,68 @@ const AllCampaings = () => {
                     <div className="comapingdetaissl">
                       <span>Aril,2024 (4)</span>
                       <hr />
-                      {loading ? "loading...." : allcomapings?.map((item) => (
-                        <>
-                          <div className="comapingdetail">
-                            <div>
-                              <input type="checkbox" name="" id="" />
-                            </div>
-                            <div className="emailsection">
-                              {/* icon is here  */}
-                              <p className="mail">{item?.comapingemail}</p>
-                              <p className="regularemail">{item?.previewtext}</p>
-                              <p className="largeid">
-                                Edited <b>{formatDate(item?.updatedAt)}</b> by you
-                              </p>
-                            </div>
-                            <div className="draftnewuilder">
-                              <p style={{ backgroundColor: "#cae0e1", fontWeight: '400', color: "#004e56" }}>Sent</p>
-                            </div>
-                            <div className="clickonpend">
-                              <div>
-                                <div className="oneone">35.5%</div>
-                                <div className="two">611</div>
-                                <div>opened</div>
-                              </div>
-                              <div>
-                                <div className="oneone">11.2%</div>
-                                <div className="two">611</div>
-                                <div>clicked</div>
-                              </div>
-                            </div>
-                            <div style={{ cursor: 'pointer' }} onClick={() => handleEditClick(item._id)} className="editdelete">
-                              <p>Edit</p>
-                              <p>
-                                <svg
-                                  className="arrodddd"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 512 512"
+                      {loading
+                        ? "loading...."
+                        : allcomapings?.map((item) => (
+                            <>
+                              <div className="comapingdetail">
+                                <div>
+                                  <input type="checkbox" name="" id="" />
+                                </div>
+                                <div className="emailsection">
+                                  {/* icon is here  */}
+                                  <p className="mail">{item?.comapingemail}</p>
+                                  <p className="regularemail">
+                                    {item?.previewtext}
+                                  </p>
+                                  <p className="largeid">
+                                    Edited <b>{formatDate(item?.updatedAt)}</b>{" "}
+                                    by you
+                                  </p>
+                                </div>
+                                <div className="draftnewuilder">
+                                  <p
+                                    style={{
+                                      backgroundColor: "#cae0e1",
+                                      fontWeight: "400",
+                                      color: "#004e56",
+                                    }}
+                                  >
+                                    Sent
+                                  </p>
+                                </div>
+                                <div className="clickonpend">
+                                  <div>
+                                    <div className="oneone">35.5%</div>
+                                    <div className="two">611</div>
+                                    <div>opened</div>
+                                  </div>
+                                  <div>
+                                    <div className="oneone">11.2%</div>
+                                    <div className="two">611</div>
+                                    <div>clicked</div>
+                                  </div>
+                                </div>
+                                <div
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => handleEditClick(item._id)}
+                                  className="editdelete"
                                 >
-                                  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                </svg>
-                              </p>
-                            </div>
-                          </div>
-                          <hr />
-                        </>
-                      ))}
-
-
-
-
+                                  <p>Edit</p>
+                                  <p>
+                                    <svg
+                                      className="arrodddd"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 512 512"
+                                    >
+                                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                    </svg>
+                                  </p>
+                                </div>
+                              </div>
+                              <hr />
+                            </>
+                          ))}
                     </div>
                   </div>
                 </div>

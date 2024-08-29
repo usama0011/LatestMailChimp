@@ -5,7 +5,7 @@ import axios from "axios";
 import { NewCampaignDetailsContext } from "../context/NewCompaingContext";
 const ChooseEmail = () => {
   const [curretRoute, setCurrentRoute] = useState("template");
-  const [openmodel, setOpenModel] = useState(false)
+  const [openmodel, setOpenModel] = useState(false);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
@@ -31,14 +31,14 @@ const ChooseEmail = () => {
     console.log(e);
   };
   const handleOpenPopup = () => {
-    setOpenModel(true)
-  }
+    setOpenModel(true);
+  };
   const openPreview = () => {
     const testLink = createTestLink(); // This function needs to be defined elsewhere or replaced with actual logic
     window.open(testLink, "Preview");
   };
   const uploadImage = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setLoading(true);
     const data = new FormData();
     data.append("file", image);
@@ -55,14 +55,14 @@ const ChooseEmail = () => {
         }
       );
       const res = await response.json();
-      console.log(res)
+      console.log(res);
       setUrl(res.secure_url);
       handleUpdateState("chooseemailtemplate", res.secure_url);
       handleUpdateState("imageurl", res.secure_url);
       setLoading(false);
       // navigation("/allcompaings")
-      console.log(url)
-      setImage(null)
+      console.log(url);
+      setImage(null);
     } catch (error) {
       setLoading(false);
     }
@@ -82,13 +82,19 @@ const ChooseEmail = () => {
   };
   const MovetoNext = async () => {
     try {
-      await axios.post("https://mailchimp-server.vercel.app/api/newcompaing", state);
-      await axios.post("https://mailchimp-server.vercel.app/api/reports", state)
+      await axios.post(
+        "https://latest-mail-chimp-server.vercel.app/api/newcompaing",
+        state
+      );
+      await axios.post(
+        "https://latest-mail-chimp-server.vercel.app/api/reports",
+        state
+      );
       navigation("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div class="pageContainer-nmRCK pageContainer_templateSelection-20m_G snipcss-FYitB">
@@ -7350,7 +7356,8 @@ const ChooseEmail = () => {
                   </div>
                   <div class="buttonOverlay-1vS-v expanded-24kuN">
                     <div class="stack-1qp4V spacing4-1xt6w">
-                      <button onClick={handleOpenPopup}
+                      <button
+                        onClick={handleOpenPopup}
                         class="root-sBgFt container-3-bH7 primary-33czz"
                         type="button"
                       >
@@ -7373,8 +7380,13 @@ const ChooseEmail = () => {
                           class="root-Hg5IF sm-3xLCd style-7wa5z"
                           id="style-7wa5z"
                         >
-                          <form class="stack-1qp4V" novalidate="" id="form-l779m">
-                            <button onClick={() => setOpenModel(false)}
+                          <form
+                            class="stack-1qp4V"
+                            novalidate=""
+                            id="form-l779m"
+                          >
+                            <button
+                              onClick={() => setOpenModel(false)}
                               class="root-1khsy closeButton-1pytm"
                               type="button"
                             >
@@ -7405,10 +7417,10 @@ const ChooseEmail = () => {
                                   >
                                     <div class="stack-1qp4V spacing4-1xt6w">
                                       <p class="root-3TDqk medium-3AcAC">
-                                        Custom-coded templates are only available
-                                        in our Classic builder for now. Upload
-                                        your template as a zip file to continue to
-                                        the Classic builder.
+                                        Custom-coded templates are only
+                                        available in our Classic builder for
+                                        now. Upload your template as a zip file
+                                        to continue to the Classic builder.
                                       </p>
                                       <div class="stack-1qp4V spacing4-1xt6w containerWidth-2rtmQ">
                                         <div class="container-37Jkg cluster-3D5Qr nowrap-34OZ-">
@@ -7457,24 +7469,31 @@ const ChooseEmail = () => {
                                                 accept="image/*"
                                                 class="fileinput-12gz-"
                                                 id="mc:180"
-
                                                 aria-describedby="mc:181"
-
                                               />
 
-                                              <label style={{ border: '1px solid #007c89', padding: "10px 30px", color: "#007c89", fontSize: "12px" }}
+                                              <label
+                                                style={{
+                                                  border: "1px solid #007c89",
+                                                  padding: "10px 30px",
+                                                  color: "#007c89",
+                                                  fontSize: "12px",
+                                                }}
                                                 for="mc:180"
                                                 class="upload-Bj38u"
                                               >
                                                 Add file
                                               </label>
-
                                             </div>
-
                                           </div>
                                           <br />
-                                          {image !== null && <p>{image?.name}</p>}
-                                          <button onClick={uploadImage}>   {loading ? "loading..." : "upload"}</button>
+                                          {image !== null && (
+                                            <p>{image?.name}</p>
+                                          )}
+                                          <button onClick={uploadImage}>
+                                            {" "}
+                                            {loading ? "loading..." : "upload"}
+                                          </button>
                                         </div>
                                       </div>
                                     </div>
@@ -7485,7 +7504,9 @@ const ChooseEmail = () => {
                             <div class="footer-GeAzX">
                               <div class="cluster-3D5Qr">
                                 <div class="alignItemsCenter-1HCiJ justifyFlexEnd-3_ERd spacing4-1S_zR">
-                                  <button onClick={handleResetClick} style={{ color: "#007c89" }}
+                                  <button
+                                    onClick={handleResetClick}
+                                    style={{ color: "#007c89" }}
                                     class="root-sBgFt container-3-bH7 tertiary-Wmhgk button-1hkgD"
                                     type="reset"
                                   >
@@ -7493,7 +7514,12 @@ const ChooseEmail = () => {
                                       Cancel
                                     </span>
                                   </button>
-                                  <button onClick={MovetoNext} style={{ backgroundColor: "#007c89", color: 'white' }}
+                                  <button
+                                    onClick={MovetoNext}
+                                    style={{
+                                      backgroundColor: "#007c89",
+                                      color: "white",
+                                    }}
                                     class="root-sBgFt container-3-bH7 primary-33czz button-3mfLr"
                                     type="button"
                                   >

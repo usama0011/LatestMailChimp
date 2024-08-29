@@ -19,7 +19,7 @@
 //     e.preventDefault();
 //     setLoading(true);
 //     try {
-//       const response = await axios.post('https://mailchimp-server.vercel.app/api/from', formData);
+//       const response = await axios.post('https://latest-mail-chimp-server.vercel.app/api/from', formData);
 //       console.log(response.data); // You can handle success response here
 //       setSuccess(true);
 //       setFormData({
@@ -51,12 +51,10 @@
 
 // export default HideEditComaping
 
-import React from 'react'
+import React from "react";
 
 const HideEditComaping = () => {
-  return (
-    <div>HideEditComaping</div>
-  )
-}
+  return <div>HideEditComaping</div>;
+};
 
-export default HideEditComaping
+export default HideEditComaping;

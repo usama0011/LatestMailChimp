@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import '../styles/AllContacts.css'
-import { Link } from 'react-router-dom'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import "../styles/AllContacts.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const AllContacts = () => {
   const [allcontacts, setAllContects] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,9 @@ const AllContacts = () => {
     const fetchCampaigns = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://mailchimp-server.vercel.app/api/newcontact');
+        const response = await axios.get(
+          "https://latest-mail-chimp-server.vercel.app/api/newcontact"
+        );
         setAllContects(response.data);
       } catch (error) {
         setError(error.message);
@@ -55,7 +57,6 @@ const AllContacts = () => {
               data-auto-enablement-allowed="true"
               class="snipcss0-4-7-9"
             ></div>
-
           </div>
           <div class="headerTop-2Y-yB snipcss0-3-6-18">
             <div class="wink snipcss0-4-18-19">
@@ -966,13 +967,14 @@ const AllContacts = () => {
               <br />
               <br />
               <div className="lastUnit">
-                <h1>Audience
-                </h1>{" "}
+                <h1>Audience</h1>{" "}
                 <div>
                   <button
                     style={{ backgroundColor: "#1b8a95", color: "white" }}
                   >
-                    <Link style={{ color: 'unset' }} to="/newcomaping">View Audience Analytics</Link>
+                    <Link style={{ color: "unset" }} to="/newcomaping">
+                      View Audience Analytics
+                    </Link>
                   </button>
                 </div>{" "}
               </div>
@@ -994,18 +996,32 @@ const AllContacts = () => {
                 <div className="tooglesmentus">
                   <div></div>
                   <div>
-                    <select style={{ width: '190px' }} name="" id="">
+                    <select style={{ width: "190px" }} name="" id="">
                       <option value="Toggle">Toggle Coloums</option>
                     </select>
-                    <button style={{ width: "190px", margin: "0px 10px" }}>Export Audience</button>
+                    <button style={{ width: "190px", margin: "0px 10px" }}>
+                      Export Audience
+                    </button>
                     <div className="linskmove">
                       <span>1-25</span>
                       <span>of</span>
                       <span>500</span>
                     </div>
                     <div class="float-right">
-                      <button aria-label="Previous results" data-dojo-attach-point="prevButton" class="button-small freddicon menu-left padding--lv1 !padding-top-bottom--lv0" title="Previous" style={{ display: "none" }}></button>
-                      <button aria-label="Next set of results" data-dojo-attach-point="nextButton" class="button-small freddicon menu-right !margin--lv0 padding--lv1 !padding-top-bottom--lv0" title="Next" style={{ display: 'inline' }}></button>
+                      <button
+                        aria-label="Previous results"
+                        data-dojo-attach-point="prevButton"
+                        class="button-small freddicon menu-left padding--lv1 !padding-top-bottom--lv0"
+                        title="Previous"
+                        style={{ display: "none" }}
+                      ></button>
+                      <button
+                        aria-label="Next set of results"
+                        data-dojo-attach-point="nextButton"
+                        class="button-small freddicon menu-right !margin--lv0 padding--lv1 !padding-top-bottom--lv0"
+                        title="Next"
+                        style={{ display: "inline" }}
+                      ></button>
                     </div>
                   </div>
                 </div>
@@ -1019,42 +1035,323 @@ const AllContacts = () => {
                 </div>
 
                 <div className="allcontactstable">
-                  <table className='mycontactstable'>
+                  <table className="mycontactstable">
                     <thead>
-                      <tr style={{ overflowX: 'scroll', border: '1px solid red' }}>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>down</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Email Address</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>First Name</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Last Name</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Address</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Phone Number</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Birthday</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Tags</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Email Markting</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Source</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Contact Rating</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Date Added</th>
-                        <th style={{ fontWeight: "400", fontSize: '14px', padding: '10px', whiteSpace: "nowrap", textAlign: "left" }}>Last Changed</th>
-
+                      <tr
+                        style={{ overflowX: "scroll", border: "1px solid red" }}
+                      >
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          down
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Email Address
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          First Name
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Last Name
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Address
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Phone Number
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Birthday
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Tags
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Email Markting
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Source
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Contact Rating
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Date Added
+                        </th>
+                        <th
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            padding: "10px",
+                            whiteSpace: "nowrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          Last Changed
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {loading ? "loading..." : allcontacts?.map((item) => (
-                        <tr className='mybotton'><td style={{ padding: '10px' }} class="row-head profile-select" title="Email address: undefined"><div class="dijit dijitReset dijitInline dijitCheckBox selectCheckBox av-checkbox" role="presentation" lang="en" widgetid="dijit_form_CheckBox_1"><input name="bulk_select[]" type="checkbox" role="checkbox" aria-checked="false" class="dijitReset dijitCheckBoxInput" data-dojo-attach-point="focusNode" data-dojo-attach-event="ondijitclick:_onClick" tabindex="0" id="dijit_form_CheckBox_1" title="" value="497203606" style={{ userSelect: "none" }} /></div>
-                        </td><td style={{ padding: "10px" }} class="row-head" title="View Profile"><div class="profile-view"><a target="_self" href="/audience/contact-profile?contact_id=cf75219d069ebac1e8e4b243d44d69a3&amp;use_segment=Y&amp;page=1&amp;pageSize=25&amp;sort=last_update_time&amp;asc=false">{item?.emailaddress}</a>
-                        </div></td><td style={{ padding: "10px" }} title="First Name"></td><td style={{ padding: "10px" }} title="Last Name"></td><td style={{ padding: "10px" }} title="Address"></td><td style={{ padding: "10px" }} title="Phone Number"></td><td style={{ padding: "10px" }} title="Birthday"></td><td title="Contact Tags" style={{ display: 'flex', alignItems: 'center', padding: '10px' }}><span title="Auto" class="tag-badge c-tagList_item inline-block border-radius--lv1 valign-middle small-meta font-weight--bold"><div class="c-tagList_inner no-clicky float-left padding--lv1 padding-top-bottom--lv0"><div class="c-tagList_label">Auto</div></div></span><span title="Insurance" class="tag-badge c-tagList_item inline-block border-radius--lv1 valign-middle small-meta font-weight--bold"><div class="c-tagList_inner no-clicky float-left padding--lv1 padding-top-bottom--lv0"><div class="c-tagList_label">Insurance</div></div></span></td><td style={{ padding: "10px" }} title="Email Marketing"><span class="success badge">Subscribed</span></td><td style={{ whiteSpace: "nowrap", padding: "10px" }} className='copypaset' title="Source">List Import from Copy/Pasted File</td><td style={{ padding: "10px" }} title="Member Rating"><ul style={{ display: 'flex', alignItems: "center" }} class="star-rating" role="note" aria-label="2-stars."><li role="presentation"><span class="freddicon star-fill"></span></li><li role="presentation"><span class="freddicon star-fill"></span></li><li role="presentation"><span class="freddicon graystar-fill"></span></li><li role="presentation"><span class="freddicon graystar-fill"></span></li><li role="presentation"><span class="freddicon graystar-fill"></span></li></ul></td><td title="Date Added" style={{ whiteSpace: 'nowrap', padding: "10px" }}>3/17/24 5:28PM</td><td title="Last Changed" style={{ whiteSpace: 'nowrap', padding: "10px" }}>3/17/24 5:28PM</td></tr>
-                      ))}
+                      {loading
+                        ? "loading..."
+                        : allcontacts?.map((item) => (
+                            <tr className="mybotton">
+                              <td
+                                style={{ padding: "10px" }}
+                                class="row-head profile-select"
+                                title="Email address: undefined"
+                              >
+                                <div
+                                  class="dijit dijitReset dijitInline dijitCheckBox selectCheckBox av-checkbox"
+                                  role="presentation"
+                                  lang="en"
+                                  widgetid="dijit_form_CheckBox_1"
+                                >
+                                  <input
+                                    name="bulk_select[]"
+                                    type="checkbox"
+                                    role="checkbox"
+                                    aria-checked="false"
+                                    class="dijitReset dijitCheckBoxInput"
+                                    data-dojo-attach-point="focusNode"
+                                    data-dojo-attach-event="ondijitclick:_onClick"
+                                    tabindex="0"
+                                    id="dijit_form_CheckBox_1"
+                                    title=""
+                                    value="497203606"
+                                    style={{ userSelect: "none" }}
+                                  />
+                                </div>
+                              </td>
+                              <td
+                                style={{ padding: "10px" }}
+                                class="row-head"
+                                title="View Profile"
+                              >
+                                <div class="profile-view">
+                                  <a
+                                    target="_self"
+                                    href="/audience/contact-profile?contact_id=cf75219d069ebac1e8e4b243d44d69a3&amp;use_segment=Y&amp;page=1&amp;pageSize=25&amp;sort=last_update_time&amp;asc=false"
+                                  >
+                                    {item?.emailaddress}
+                                  </a>
+                                </div>
+                              </td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="First Name"
+                              ></td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Last Name"
+                              ></td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Address"
+                              ></td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Phone Number"
+                              ></td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Birthday"
+                              ></td>
+                              <td
+                                title="Contact Tags"
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  padding: "10px",
+                                }}
+                              >
+                                <span
+                                  title="Auto"
+                                  class="tag-badge c-tagList_item inline-block border-radius--lv1 valign-middle small-meta font-weight--bold"
+                                >
+                                  <div class="c-tagList_inner no-clicky float-left padding--lv1 padding-top-bottom--lv0">
+                                    <div class="c-tagList_label">Auto</div>
+                                  </div>
+                                </span>
+                                <span
+                                  title="Insurance"
+                                  class="tag-badge c-tagList_item inline-block border-radius--lv1 valign-middle small-meta font-weight--bold"
+                                >
+                                  <div class="c-tagList_inner no-clicky float-left padding--lv1 padding-top-bottom--lv0">
+                                    <div class="c-tagList_label">Insurance</div>
+                                  </div>
+                                </span>
+                              </td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Email Marketing"
+                              >
+                                <span class="success badge">Subscribed</span>
+                              </td>
+                              <td
+                                style={{
+                                  whiteSpace: "nowrap",
+                                  padding: "10px",
+                                }}
+                                className="copypaset"
+                                title="Source"
+                              >
+                                List Import from Copy/Pasted File
+                              </td>
+                              <td
+                                style={{ padding: "10px" }}
+                                title="Member Rating"
+                              >
+                                <ul
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                  }}
+                                  class="star-rating"
+                                  role="note"
+                                  aria-label="2-stars."
+                                >
+                                  <li role="presentation">
+                                    <span class="freddicon star-fill"></span>
+                                  </li>
+                                  <li role="presentation">
+                                    <span class="freddicon star-fill"></span>
+                                  </li>
+                                  <li role="presentation">
+                                    <span class="freddicon graystar-fill"></span>
+                                  </li>
+                                  <li role="presentation">
+                                    <span class="freddicon graystar-fill"></span>
+                                  </li>
+                                  <li role="presentation">
+                                    <span class="freddicon graystar-fill"></span>
+                                  </li>
+                                </ul>
+                              </td>
+                              <td
+                                title="Date Added"
+                                style={{
+                                  whiteSpace: "nowrap",
+                                  padding: "10px",
+                                }}
+                              >
+                                3/17/24 5:28PM
+                              </td>
+                              <td
+                                title="Last Changed"
+                                style={{
+                                  whiteSpace: "nowrap",
+                                  padding: "10px",
+                                }}
+                              >
+                                3/17/24 5:28PM
+                              </td>
+                            </tr>
+                          ))}
                     </tbody>
                   </table>
                 </div>
               </div>
-
             </div>
           </main>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AllContacts
+export default AllContacts;

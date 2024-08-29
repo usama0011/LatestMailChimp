@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../styles/ViewAllHideCompaing.css'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "../styles/ViewAllHideCompaing.css";
+import { useNavigate } from "react-router-dom";
 const ViewAllComapingHide = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
- 
+
   useEffect(() => {
     const fetchCampaigns = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://mailchimp-server.vercel.app/api/newcompaing');
+        const response = await axios.get(
+          "https://latest-mail-chimp-server.vercel.app/api/newcompaing"
+        );
         setCampaigns(response.data);
       } catch (error) {
         setError(error.message);
@@ -24,29 +26,32 @@ const ViewAllComapingHide = () => {
   }, []);
 
   const handleEdit = (id) => {
-   navigate(`/hideeditcompaing/${id}`)
+    navigate(`/hideeditcompaing/${id}`);
   };
-
 
   const deleteCampaign = async (id) => {
     try {
-      await axios.delete(`https://mailchimp-server.vercel.app/api/newcompaing/${id}`);
+      await axios.delete(
+        `https://latest-mail-chimp-server.vercel.app/api/newcompaing/${id}`
+      );
       // If successful, remove the campaign from the state
-      setCampaigns(prevCampaigns => prevCampaigns.filter(campaign => campaign._id !== id));
-      alert("Compaing Delete Successfully!!")
+      setCampaigns((prevCampaigns) =>
+        prevCampaigns.filter((campaign) => campaign._id !== id)
+      );
+      alert("Compaing Delete Successfully!!");
     } catch (error) {
-      console.error('Error deleting campaign:', error);
+      console.error("Error deleting campaign:", error);
     }
   };
-  
+
   return (
-    <div className='hidecompaingmaincontianer'>
+    <div className="hidecompaingmaincontianer">
       <h2>All Campaigns ({campaigns?.length})</h2>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <ul style={{maxWidth:"600px"}}>
-        {campaigns.map(campaign => (
-          <li className='myliItemcomaping' key={campaign._id}>
+      <ul style={{ maxWidth: "600px" }}>
+        {campaigns.map((campaign) => (
+          <li className="myliItemcomaping" key={campaign._id}>
             <div>Campaign Name: {campaign.campaignname}</div>
             <div>Email: {campaign.compaingemail}</div>
             <div>Subject: {campaign.subject}</div>
@@ -56,8 +61,18 @@ const ViewAllComapingHide = () => {
             <div>Image URL: {campaign.imageurl}</div>
             <br />
             <div>
-              <button style={{backgroundColor:"green",color:'white'}} onClick={() => handleEdit(campaign._id)}>Edit</button>
-              <button style={{backgroundColor:"red",color:"white"}}  onClick={() => deleteCampaign(campaign._id)}>Delete</button>
+              <button
+                style={{ backgroundColor: "green", color: "white" }}
+                onClick={() => handleEdit(campaign._id)}
+              >
+                Edit
+              </button>
+              <button
+                style={{ backgroundColor: "red", color: "white" }}
+                onClick={() => deleteCampaign(campaign._id)}
+              >
+                Delete
+              </button>
             </div>
           </li>
         ))}

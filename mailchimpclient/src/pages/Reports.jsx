@@ -4,30 +4,38 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Reports = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [createdAt, setCreatedAt] = useState("");
 
   const handleviewreport = (id) => {
-    navigate(`/allcompaings/${id}`)
-  }
+    navigate(`/allcompaings/${id}`);
+  };
   useEffect(() => {
-    axios.get('https://mailchimp-server.vercel.app/api/reports')
-      .then(response => {
+    axios
+      .get("https://latest-mail-chimp-server.vercel.app/api/reports")
+      .then((response) => {
         setReports(response.data);
         setLoading(false);
       })
-      .catch(error => {
-        setError('Error fetching reports');
+      .catch((error) => {
+        setError("Error fetching reports");
         setLoading(false);
       });
   }, []);
   const formatDate = (dateString) => {
-    const options = { weekday: 'short', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    const options = {
+      weekday: "short",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString("en-US", options);
   };
   return (
     <div>
@@ -950,9 +958,12 @@ const Reports = () => {
 
                 <div className="lastUnit">
                   <h1>Reports</h1>{" "}
-                  <div >
-                    <button style={{ backgroundColor: "#716b67", color: 'white' }}>Create Comparative Reports</button>
-
+                  <div>
+                    <button
+                      style={{ backgroundColor: "#716b67", color: "white" }}
+                    >
+                      Create Comparative Reports
+                    </button>
                   </div>{" "}
                 </div>
                 <div
@@ -961,7 +972,6 @@ const Reports = () => {
                 >
                   <p data-dojo-attach-point="selectLabel" class="ddkjsldfj">
                     All audiences
-
                   </p>
                 </div>
 
@@ -1220,57 +1230,65 @@ const Reports = () => {
                     <div className="comapingdetaissl">
                       <span>Aril,2024 (4)</span>
                       <hr />
-                      {loading ? "Loading..." : reports?.map((item) => (
-                        <>
-                          <div className="comapingdetail">
-                            <div>
-                              <input type="checkbox" name="" id="" />
-                            </div>
-                            <div className="emailsection">
-                              {/* icon is here  */}
-                              <p className="mail">{item?.comapingemail}</p>
-                              <p className="regularemail">Regular Next We Lines</p>
-                              <p className="largeid">
-                                Sent <b>{formatDate(item.createdAt)}</b>
-                                <br />
-                                to {item?.recipients} recipients by you
-                              </p>
-                            </div>
+                      {loading
+                        ? "Loading..."
+                        : reports?.map((item) => (
+                            <>
+                              <div className="comapingdetail">
+                                <div>
+                                  <input type="checkbox" name="" id="" />
+                                </div>
+                                <div className="emailsection">
+                                  {/* icon is here  */}
+                                  <p className="mail">{item?.comapingemail}</p>
+                                  <p className="regularemail">
+                                    Regular Next We Lines
+                                  </p>
+                                  <p className="largeid">
+                                    Sent <b>{formatDate(item.createdAt)}</b>
+                                    <br />
+                                    to {item?.recipients} recipients by you
+                                  </p>
+                                </div>
 
-                            <div className="draftnewuilder">
-                              <p style={{ backgroundColor: "#d8eacc" }}>Send</p>
-                              <p>New Builder</p>
-                            </div>
-                            <div className="clickonpend">
-                              <div>
-                                <div className="oneone">35.5%</div>
-                                <div className="two">611</div>
-                                <div>opened</div>
-                              </div>
-                              <div>
-                                <div className="oneone">11.2%</div>
-                                <div className="two">611</div>
-                                <div>clicked</div>
-                              </div>
-                            </div>
-                            <div onClick={() => handleviewreport(item._id)} style={{ width: "150px" }} className="reporseditcele">
-                              <p>View Reports</p>
-                              <p>
-                                <svg
-                                  className="arrodddd"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 512 512"
+                                <div className="draftnewuilder">
+                                  <p style={{ backgroundColor: "#d8eacc" }}>
+                                    Send
+                                  </p>
+                                  <p>New Builder</p>
+                                </div>
+                                <div className="clickonpend">
+                                  <div>
+                                    <div className="oneone">35.5%</div>
+                                    <div className="two">611</div>
+                                    <div>opened</div>
+                                  </div>
+                                  <div>
+                                    <div className="oneone">11.2%</div>
+                                    <div className="two">611</div>
+                                    <div>clicked</div>
+                                  </div>
+                                </div>
+                                <div
+                                  onClick={() => handleviewreport(item._id)}
+                                  style={{ width: "150px" }}
+                                  className="reporseditcele"
                                 >
-                                  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                </svg>
-                              </p>
-                            </div>
-                          </div>
-                          <hr />
-
-                        </>
-                      ))}
-
+                                  <p>View Reports</p>
+                                  <p>
+                                    <svg
+                                      className="arrodddd"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 512 512"
+                                    >
+                                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                    </svg>
+                                  </p>
+                                </div>
+                              </div>
+                              <hr />
+                            </>
+                          ))}
                     </div>
                   </div>
                 </div>

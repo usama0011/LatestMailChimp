@@ -1,25 +1,25 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import "../styles/CreateEmail.css";
 import { Link } from "react-router-dom";
 import { NewCampaignDetailsContext } from "../context/NewCompaingContext";
 import { Calendar } from "react-date-range";
 import axios from "axios";
 const CreateEmail = () => {
-  const [adminEmail, setAdminEmail] = useState({})
+  const [adminEmail, setAdminEmail] = useState({});
   const [subject, setSubject] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  const [choosedate, setchoosedate] = useState(new Date())
+  const [choosedate, setchoosedate] = useState(new Date());
   const myRef = useRef();
   const [clickedOutside, setClickedOutside] = useState(false);
   const [perviewtext, setPreviewText] = useState("");
   const { state, dispatch } = useContext(NewCampaignDetailsContext);
   const [editsubject, setEditSubject] = useState(false);
   const [edittime, setEditTime] = useState(false);
-  const [showcalender, setShowCalender] = useState(false)
+  const [showcalender, setShowCalender] = useState(false);
   const handleAddSubject = () => {
     setEditSubject(true);
   };
@@ -31,7 +31,7 @@ const CreateEmail = () => {
     handleUpdateState("subject", subject);
     handleUpdateState("previewtext", perviewtext);
     handleUpdateState("entryDate", choosedate);
-    setEditSubject(false)
+    setEditSubject(false);
   };
   const openaddTime = () => {
     setEditTime(true);
@@ -39,46 +39,48 @@ const CreateEmail = () => {
   const handlesaveTimebtn = (e) => {
     e.preventDefault();
     setEditTime(false);
-  }
+  };
   function handleSelect(date) {
     console.log(date); // native Date object
 
     // Extract date components
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const day = String(date.getDate()).padStart(2, "0");
 
     // Format the date as YYYY-MM-DD
     const formattedDate = `${year}-${month}-${day}`;
 
     setchoosedate(formattedDate);
-    handleClickInside()
+    handleClickInside();
   }
   // hello usamasadas
-  const handleClickOutside = e => {
+  const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
       setClickedOutside(true);
     }
   };
   const handleClickInside = () => setClickedOutside(false);
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   });
   useEffect(() => {
     const fetchFrom = async () => {
       try {
-        const response = await axios.get(`https://mailchimp-server.vercel.app/api/from/66560e29438e34fecd29ee10`);
+        const response = await axios.get(
+          `https://latest-mail-chimp-server.vercel.app/api/from/66560e29438e34fecd29ee10`
+        );
         setSuccess(true);
-        setAdminEmail(response.data)
+        setAdminEmail(response.data);
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
         setError(error.message);
       }
-    }
-    fetchFrom()
-  }, [])
-  console.log(adminEmail)
+    };
+    fetchFrom();
+  }, []);
+  console.log(adminEmail);
   return (
     <div class="root-3uY95 snipcss-mSWlr">
       <div class="container-2aeSm">
@@ -102,7 +104,6 @@ const CreateEmail = () => {
                         </span>
                       </div>
                     </div>
-
                   </div>
                 </h1>
               </div>
@@ -227,9 +228,7 @@ const CreateEmail = () => {
                                     <p
                                       class="root-3TDqk medium-bold-2nZ0J error-1dkRg"
                                       data-testid="validation-message"
-                                    >
-
-                                    </p>
+                                    ></p>
                                   </div>
                                 </div>
                               </div>
@@ -773,12 +772,21 @@ const CreateEmail = () => {
                                                           padding: "5px 10px",
                                                         }}
                                                       >
-
                                                         {clickedOutside ? (
-                                                          <div style={{ position: "absolute", top: 0, left: 0 }} className="absoluteinput">
+                                                          <div
+                                                            style={{
+                                                              position:
+                                                                "absolute",
+                                                              top: 0,
+                                                              left: 0,
+                                                            }}
+                                                            className="absoluteinput"
+                                                          >
                                                             <Calendar
                                                               date={new Date()}
-                                                              onChange={handleSelect}
+                                                              onChange={
+                                                                handleSelect
+                                                              }
                                                             />
                                                           </div>
                                                         ) : null}
@@ -806,7 +814,12 @@ const CreateEmail = () => {
                                                             <span class="wink-visually-hidden">
                                                               Open date picker
                                                             </span>
-                                                            <svg onClick={() => setClickedOutside(true)}
+                                                            <svg
+                                                              onClick={() =>
+                                                                setClickedOutside(
+                                                                  true
+                                                                )
+                                                              }
                                                               xmlns="http://www.w3.org/2000/svg"
                                                               viewBox="0 0 24 24"
                                                               focusable="false"
@@ -915,9 +928,9 @@ const CreateEmail = () => {
                                             </div>
                                             <div class="cluster-3D5Qr">
                                               <div class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing4-1S_zR">
-                                                <button onClick={handlesaveTimebtn}
+                                                <button
+                                                  onClick={handlesaveTimebtn}
                                                   class="root-sBgFt container-3-bH7 primary-33czz button-3mfLr"
-
                                                 >
                                                   <span class="temporarySpan-2iF2p">
                                                     Save
@@ -1072,7 +1085,15 @@ const CreateEmail = () => {
                             <p class="root-3TDqk medium-3AcAC">Facebook</p>
                           </div>
                         </div>
-                        <button style={{ backgroundColor: 'transparent', color: "#0b8495", textDecoration: "underline" }} type="button" class="root-EzRO6">
+                        <button
+                          style={{
+                            backgroundColor: "transparent",
+                            color: "#0b8495",
+                            textDecoration: "underline",
+                          }}
+                          type="button"
+                          class="root-EzRO6"
+                        >
                           <span class="span-2w7il">Connect Facebook</span>
                         </button>
                       </div>
@@ -1094,7 +1115,15 @@ const CreateEmail = () => {
                             </p>
                           </div>
                         </div>
-                        <button style={{ backgroundColor: 'transparent', color: "#0b8495", textDecoration: "underline" }} type="button" class="root-EzRO6">
+                        <button
+                          style={{
+                            backgroundColor: "transparent",
+                            color: "#0b8495",
+                            textDecoration: "underline",
+                          }}
+                          type="button"
+                          class="root-EzRO6"
+                        >
                           <span class="span-2w7il">
                             Connect X (formerly Twitter)
                           </span>
@@ -1116,7 +1145,15 @@ const CreateEmail = () => {
                             <p class="root-3TDqk medium-3AcAC">Instagram</p>
                           </div>
                         </div>
-                        <button style={{ backgroundColor: 'transparent', color: "#0b8495", textDecoration: "underline" }} type="button" class="root-EzRO6">
+                        <button
+                          style={{
+                            backgroundColor: "transparent",
+                            color: "#0b8495",
+                            textDecoration: "underline",
+                          }}
+                          type="button"
+                          class="root-EzRO6"
+                        >
                           <span class="span-2w7il">Connect Instagram</span>
                         </button>
                       </div>
