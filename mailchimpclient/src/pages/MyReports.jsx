@@ -22,7 +22,7 @@ const MyReports = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.post(
+      await axios.delete(
         `https://latest-mail-chimp-server.vercel.app/api/reports/${id}`
       );
     } catch (error) {
