@@ -1600,14 +1600,6 @@ const ViewCompaing = () => {
                     </div>
                     <div className="sectoinrightclicked">
                       <div className="whitegatway">
-                        <div className="greadalbolys">
-                          <p>
-                            <h3>Great Daily</h3>
-                          </p>
-                          <p>
-                            <h3>Blogs</h3>
-                          </p>
-                        </div>
                         <img
                           style={{
                             width: "100%",
