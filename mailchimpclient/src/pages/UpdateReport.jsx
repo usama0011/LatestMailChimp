@@ -20,7 +20,7 @@ const UpdateReport = () => {
     Clicksperuniqueopens: "",
     Totalopens: "",
     Lastopened: "",
-    lastClicked: "",
+    lastCliked: "",
     Forwarded: "",
     Abusereports: "",
     Orders: "",
@@ -201,13 +201,13 @@ const UpdateReport = () => {
             setFormData({ ...formData, Lastopened: event.target.value })
           }
         />
-        <label>lastClicked:</label>
+        <label>lastCliked:</label>
         <input
           type="date"
-          name="lastClicked"
-          value={formData.lastClicked}
+          name="lastCliked"
+          value={formData.lastCliked}
           onChange={(event) =>
-            setFormData({ ...formData, lastClicked: event.target.value })
+            setFormData({ ...formData, lastCliked: event.target.value })
           }
         />
         <label>Forwarded:</label>

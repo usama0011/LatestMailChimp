@@ -49,10 +49,10 @@ const ViewAllComapingHide = () => {
       <h2>All Campaigns ({campaigns?.length})</h2>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <ul style={{ maxWidth: "600px" }}>
+      <ul style={{ maxWidth: "900px" }}>
         {campaigns.map((campaign) => (
           <li className="myliItemcomaping" key={campaign._id}>
-            <div>Campaign Name: {campaign.campaignname}</div>
+            <div>Campaign Name: {campaign.compaingname}</div>
             <div>Email: {campaign.compaingemail}</div>
             <div>Subject: {campaign.subject}</div>
             <div>Preview Text: {campaign.previewtext}</div>

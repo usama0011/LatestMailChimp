@@ -23,7 +23,7 @@ const campaignSchema = new Schema(
       type: String,
     },
     imageurl: {
-      type: String
+      type: String,
     },
     visits: {
       type: String,
@@ -32,14 +32,14 @@ const campaignSchema = new Schema(
       type: String,
     },
     clicks: {
-      type: String
+      type: String,
     },
     clickPercentage: {
       type: String,
     },
     entryDate: {
       type: String,
-    }
+    },
   },
   { timestamps: true }
 );

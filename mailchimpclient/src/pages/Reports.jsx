@@ -37,6 +37,16 @@ const Reports = () => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   };
+  const today = new Date();
+
+  // Format today's date as "Today, Month Day, Year"
+  const formattedDate = today.toLocaleDateString("en-US", {
+    weekday: "long", // Adds the day of the week, like "Monday"
+    month: "long", // Month as full name, e.g., "April"
+    day: "numeric", // Day of the month, e.g., "5"
+    year: "numeric", // Full year, e.g., "2024"
+  });
+
   return (
     <div>
       <div
@@ -1228,7 +1238,9 @@ const Reports = () => {
                       </div>
                     </div>
                     <div className="comapingdetaissl">
-                      <span>Aril,2024 (4)</span>
+                      <span>
+                        {formattedDate} ({reports?.length})
+                      </span>
                       <hr />
                       {loading
                         ? "Loading..."
@@ -1253,19 +1265,23 @@ const Reports = () => {
 
                                 <div className="draftnewuilder">
                                   <p style={{ backgroundColor: "#d8eacc" }}>
-                                    Send
+                                    Sent
                                   </p>
                                   <p>New Builder</p>
                                 </div>
                                 <div className="clickonpend">
                                   <div>
-                                    <div className="oneone">35.5%</div>
-                                    <div className="two">611</div>
+                                    <div className="oneone">
+                                      {item?.vistitPercentage}%
+                                    </div>
+                                    <div className="two">{item?.visits}</div>
                                     <div>opened</div>
                                   </div>
                                   <div>
-                                    <div className="oneone">11.2%</div>
-                                    <div className="two">611</div>
+                                    <div className="oneone">
+                                      {item?.clickPercentage}%
+                                    </div>
+                                    <div className="two">{item?.clicks}</div>
                                     <div>clicked</div>
                                   </div>
                                 </div>

@@ -57,6 +57,16 @@ const AllCampaings = () => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   };
+  const today = new Date();
+
+  // Format today's date as "Today, Month Day, Year"
+  const formattedDate = today.toLocaleDateString("en-US", {
+    weekday: "long", // Adds the day of the week, like "Monday"
+    month: "long", // Month as full name, e.g., "April"
+    day: "numeric", // Day of the month, e.g., "5"
+    year: "numeric", // Full year, e.g., "2024"
+  });
+
   return (
     <div>
       <div
@@ -1254,7 +1264,9 @@ const AllCampaings = () => {
                       </div>
                     </div>
                     <div className="comapingdetaissl">
-                      <span>Aril,2024 (4)</span>
+                      <span>
+                        {formattedDate} ({allcomapings?.length})
+                      </span>
                       <hr />
                       {loading
                         ? "loading...."
@@ -1271,8 +1283,8 @@ const AllCampaings = () => {
                                     {item?.previewtext}
                                   </p>
                                   <p className="largeid">
-                                    Edited <b>{formatDate(item?.updatedAt)}</b>{" "}
-                                    by you
+                                    Sent <b>{formatDate(item?.updatedAt)}</b> by
+                                    you
                                   </p>
                                 </div>
                                 <div className="draftnewuilder">
@@ -1288,13 +1300,17 @@ const AllCampaings = () => {
                                 </div>
                                 <div className="clickonpend">
                                   <div>
-                                    <div className="oneone">35.5%</div>
-                                    <div className="two">611</div>
+                                    <div className="oneone">
+                                      {item?.vistitPercentage}%
+                                    </div>
+                                    <div className="two">{item?.visits}</div>
                                     <div>opened</div>
                                   </div>
                                   <div>
-                                    <div className="oneone">11.2%</div>
-                                    <div className="two">611</div>
+                                    <div className="oneone">
+                                      {item?.clickPercentage}%
+                                    </div>
+                                    <div className="two">{item?.clicks}</div>
                                     <div>clicked</div>
                                   </div>
                                 </div>

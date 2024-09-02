@@ -29,7 +29,7 @@ const MyReports = () => {
       console.log(error);
     }
   };
-
+  console.log(reports, "reports");
   return (
     <div style={{ padding: "30px" }} className="my-reports">
       <h1>My Reports</h1>
@@ -54,7 +54,7 @@ const MyReports = () => {
           <p>Clicks per Unique Opens: {report.Clicksperuniqueopens}</p>
           <p>Total Opens: {report.Totalopens}</p>
           <p>Last Opened: {report.Lastopened}</p>
-          <p>Last Clicked: {report.lastClicked}</p>
+          <p>Last Clicked: {report.lastCliked}</p>
           <p>Forwarded: {report.Forwarded}</p>
           <p>Abuse Reports: {report.Abusereports}</p>
           <p>Orders: {report.Orders}</p>

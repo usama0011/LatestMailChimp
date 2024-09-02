@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     previewtext,
     sendtime,
     chooseemailtemplate,
-    imageurl
+    imageurl,
   } = req.body;
 
   const campaign = new Campaign({
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
     previewtext,
     sendtime,
     chooseemailtemplate,
-    imageurl
+    imageurl,
   });
 
   try {

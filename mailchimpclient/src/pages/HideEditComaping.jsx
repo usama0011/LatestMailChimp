@@ -1,60 +1,106 @@
-// import axios from 'axios';
-// import React, { useState } from 'react'
-
-// const HideEditComaping = () => {
-//   const [formData, setFormData] = useState({
-//     from: ''
-//   });
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(false);
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value
-//     });
-//   };
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     try {
-//       const response = await axios.post('https://latest-mail-chimp-server.vercel.app/api/from', formData);
-//       console.log(response.data); // You can handle success response here
-//       setSuccess(true);
-//       setFormData({
-//         from: '',
-//       })
-//     } catch (error) {
-//       console.error('Error:', error);
-//       setError(error.message);
-//     }
-//     setLoading(false);
-//   };
-//   return (
-//     <div>
-
-//       {error && <p>Error: {error}</p>}
-
-//       <form style={{ display: 'flex', flexDirection: "column", maxWidth: "500px", margin: "auto" }} onSubmit={handleSubmit}>
-//         <br />
-//         <h2 style={{ textAlign: "center", fontWeight: 'bold' }}>Contact Form</h2>
-//         <br />
-//         <input style={{ marginBottom: '10px' }} type="email" name="emailaddress" value={formData.emailaddress} onChange={handleChange} placeholder="Email Address" required />
-
-//         <button type="submit" disabled={loading}>Submit</button>
-//         {success && <p style={{ color: 'green' }}>Contact created successfully!</p>}
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default HideEditComaping
-
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Form, Input, Button, message, Spin } from "antd";
+import { useParams } from "react-router-dom";
 
 const HideEditComaping = () => {
-  return <div>HideEditComaping</div>;
+  const { id } = useParams();
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Fetch data for the specific campaign on component mount
+  useEffect(() => {
+    const fetchCampaignData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://latest-mail-chimp-server.vercel.app/api/newcompaing/${id}`
+        );
+        form.setFieldsValue(response.data); // Populate form with fetched data
+        setLoading(false);
+      } catch (err) {
+        setError("Error fetching campaign data");
+        setLoading(false);
+      }
+    };
+
+    fetchCampaignData();
+  }, [id, form]);
+
+  // Handle form submission
+  const onFinish = async (values) => {
+    setSaving(true);
+    try {
+      await axios.put(
+        `https://latest-mail-chimp-server.vercel.app/api/newcompaing/${id}`,
+        values
+      );
+      message.success("Campaign updated successfully");
+      setSaving(false);
+    } catch (err) {
+      message.error("Failed to update campaign");
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div style={{ padding: "30px" }}>
+      <h2>Edit Campaign</h2>
+      {loading ? (
+        <Spin size="large" />
+      ) : error ? (
+        <p style={{ color: "red" }}>{error}</p>
+      ) : (
+        <Form form={form} onFinish={onFinish} layout="vertical">
+          <Form.Item
+            name="compaingname"
+            label="Campaign Name"
+            rules={[{ required: true, message: "Please enter campaign name" }]}
+          >
+            <Input placeholder="Enter campaign name" />
+          </Form.Item>
+          <Form.Item name="comapingemail" label="Campaign Email">
+            <Input placeholder="Enter campaign email" />
+          </Form.Item>
+          <Form.Item name="subject" label="Subject">
+            <Input placeholder="Enter email subject" />
+          </Form.Item>
+          <Form.Item name="previewtext" label="Preview Text">
+            <Input placeholder="Enter preview text" />
+          </Form.Item>
+          <Form.Item name="sendtime" label="Send Time">
+            <Input placeholder="Enter send time" />
+          </Form.Item>
+          <Form.Item name="chooseemailtemplate" label="Email Template">
+            <Input placeholder="Enter email template name" />
+          </Form.Item>
+          <Form.Item name="imageurl" label="Image URL">
+            <Input placeholder="Enter image URL" />
+          </Form.Item>
+          <Form.Item name="visits" label="Visits">
+            <Input placeholder="Enter number of visits" />
+          </Form.Item>
+          <Form.Item name="vistitPercentage" label="Visit Percentage">
+            <Input placeholder="Enter visit percentage" />
+          </Form.Item>
+          <Form.Item name="clicks" label="Clicks">
+            <Input placeholder="Enter number of clicks" />
+          </Form.Item>
+          <Form.Item name="clickPercentage" label="Click Percentage">
+            <Input placeholder="Enter click percentage" />
+          </Form.Item>
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit" loading={saving}>
+              Update Campaign
+            </Button>
+          </Form.Item>
+        </Form>
+      )}
+    </div>
+  );
 };
 
 export default HideEditComaping;
