@@ -67,6 +67,12 @@ const reportSchema = new Schema(
     Orders: {
       type: String,
     },
+    clickpercentge: {
+      type: String,
+    },
+    openedpercentage: {
+      type: String,
+    },
     Averageorderrevenue: {
       type: String,
     },

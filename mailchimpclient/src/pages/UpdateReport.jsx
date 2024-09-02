@@ -14,6 +14,8 @@ const UpdateReport = () => {
     deliveredtime: "",
     opened: "",
     clicked: "",
+    clickpercentge: "",
+    openedpercentage: "",
     bounced: "",
     unsubscribed: "",
     Successfuldeliveries: "",
@@ -137,6 +139,24 @@ const UpdateReport = () => {
           value={formData.clicked}
           onChange={(event) =>
             setFormData({ ...formData, clicked: event.target.value })
+          }
+        />
+        <label>Click Percentage:</label>
+        <input
+          type="text"
+          name="clickpercentge"
+          value={formData.clickpercentge}
+          onChange={(event) =>
+            setFormData({ ...formData, clickpercentge: event.target.value })
+          }
+        />
+        <label>Opend Percentage:</label>
+        <input
+          type="text"
+          name="openedpercentage"
+          value={formData.openedpercentage}
+          onChange={(event) =>
+            setFormData({ ...formData, openedpercentage: event.target.value })
           }
         />
 
