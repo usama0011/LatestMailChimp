@@ -1274,14 +1274,14 @@ const Reports = () => {
                                     <div className="oneone">
                                       {item?.vistitPercentage}%
                                     </div>
-                                    <div className="two">{item?.visits}</div>
+                                    <div className="two">{item?.opened}</div>
                                     <div>opened</div>
                                   </div>
                                   <div>
                                     <div className="oneone">
                                       {item?.clickPercentage}%
                                     </div>
-                                    <div className="two">{item?.clicks}</div>
+                                    <div className="two">{item?.clicked}</div>
                                     <div>clicked</div>
                                   </div>
                                 </div>
