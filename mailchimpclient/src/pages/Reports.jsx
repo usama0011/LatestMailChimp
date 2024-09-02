@@ -1254,7 +1254,7 @@ const Reports = () => {
                                   {/* icon is here  */}
                                   <p className="mail">{item?.comapingemail}</p>
                                   <p className="regularemail">
-                                    Regular Next We Lines
+                                    Regular Next Web Lines
                                   </p>
                                   <p className="largeid">
                                     Sent <b>{formatDate(item?.sendtime)}</b>

@@ -28,7 +28,7 @@ const ViewCompaing = () => {
   const femaleFill =
     (singlereport?.female / (singlereport?.male + singlereport?.female)) * 100;
   return (
-    <div>
+    <div className="mainmainview">
       <div
         className="animation-theme snipcss0-0-0-1 snipcss-zRclk"
         cz-shortcut-listen="true"
@@ -1001,7 +1001,12 @@ const ViewCompaing = () => {
                           aria-selected="false"
                           aria-controls="mc:89:tabs:1:panel"
                         >
-                          Click Performance
+                          <a
+                            href="#clickperformance"
+                            style={{ color: "unset" }}
+                          >
+                            Click Performance
+                          </a>
                         </span>
                         <span
                           style={{ paddingLeft: "50px", color: "black" }}
@@ -1012,7 +1017,13 @@ const ViewCompaing = () => {
                           aria-selected="false"
                           aria-controls="mc:89:tabs:1:panel"
                         >
-                          Content Optimizer
+                          <a
+                            style={{ color: "unset" }}
+                            href="#contentoptimizer"
+                          >
+                            {" "}
+                            Content Optimizer
+                          </a>
                         </span>
                         <span
                           style={{ paddingLeft: "50px", color: "black" }}
@@ -1395,7 +1406,7 @@ const ViewCompaing = () => {
                   </div>{" "}
                 </div>
                 {/* Content Optimizer here  */}
-                <div class="wink kdsjkdljf">
+                <div id="contentoptimizer" class="wink kdsjkdljf">
                   <header class="header-6RFqy">
                     <div class="row-2bcC_">
                       <img
@@ -1547,7 +1558,7 @@ const ViewCompaing = () => {
                 <br />
                 <br />
                 {/* Content Optimizer end */}
-                <div class="wink kdsjkdljf">
+                <div id="clickperformance" class="wink kdsjkdljf">
                   <header class="header-6RFqy">
                     <div class="row-2bcC_">
                       <img

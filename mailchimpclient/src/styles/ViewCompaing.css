@@ -1,3 +1,6 @@
+.mainmainview {
+  scroll-behavior: smooth;
+}
 .dfoisid {
   display: flex;
   align-items: center;
