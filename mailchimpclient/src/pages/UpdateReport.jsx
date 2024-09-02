@@ -13,6 +13,7 @@ const UpdateReport = () => {
     subject: "",
     deliveredtime: "",
     opened: "",
+    sendtime: "",
     clicked: "",
     clickpercentge: "",
     openedpercentage: "",
@@ -167,6 +168,15 @@ const UpdateReport = () => {
           value={formData.bounced}
           onChange={(event) =>
             setFormData({ ...formData, bounced: event.target.value })
+          }
+        />
+        <label>Send Time:</label>
+        <input
+          type="text"
+          name="bounced"
+          value={formData.sendtime}
+          onChange={(event) =>
+            setFormData({ ...formData, sendtime: event.target.value })
           }
         />
         <label>UnSubscribed:</label>

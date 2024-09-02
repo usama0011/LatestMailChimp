@@ -1257,7 +1257,7 @@ const Reports = () => {
                                     Regular Next We Lines
                                   </p>
                                   <p className="largeid">
-                                    Sent <b>{formatDate(item.createdAt)}</b>
+                                    Sent <b>{formatDate(item?.sendtime)}</b>
                                     <br />
                                     to {item?.recipients} recipients by you
                                   </p>

@@ -1007,7 +1007,7 @@ const AllCampaings = () => {
                   <p style={{ fontSize: "20px", color: "#241c60" }}>
                     Your aduience has{" "}
                     <span style={{ color: "#007c89 " }}> 50,000</span> contacts.
-                    <span style={{ color: "#007c89 " }}> 48,795</span> fo these
+                    <span style={{ color: "#007c89 " }}> 48,795</span> of these
                     are subscribers.
                   </p>
                 </div>
@@ -1283,7 +1283,7 @@ const AllCampaings = () => {
                                     {item?.previewtext}
                                   </p>
                                   <p className="largeid">
-                                    Sent <b>{formatDate(item?.updatedAt)}</b> by
+                                    Sent <b>{formatDate(item?.sendtime)}</b> by
                                     you
                                   </p>
                                 </div>

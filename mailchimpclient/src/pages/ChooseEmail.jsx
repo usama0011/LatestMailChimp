@@ -95,7 +95,7 @@ const ChooseEmail = () => {
       console.log(error);
     }
   };
-
+  console.log("state", state);
   return (
     <div class="pageContainer-nmRCK pageContainer_templateSelection-20m_G snipcss-FYitB">
       <div class="root-3uY95">

@@ -9,7 +9,6 @@ import axios from "axios";
 const CreateEmail = () => {
   const [adminEmail, setAdminEmail] = useState({});
   const [subject, setSubject] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [choosedate, setchoosedate] = useState(new Date());
@@ -26,19 +25,9 @@ const CreateEmail = () => {
   const handleUpdateState = (field, value) => {
     dispatch({ type: "UPDATE_STATE", payload: { field, value } });
   };
-  const submitsaveSubject = (e) => {
-    e.preventDefault();
-    handleUpdateState("subject", subject);
-    handleUpdateState("previewtext", perviewtext);
-    handleUpdateState("entryDate", choosedate);
-    setEditSubject(false);
-  };
+
   const openaddTime = () => {
     setEditTime(true);
-  };
-  const handlesaveTimebtn = (e) => {
-    e.preventDefault();
-    setEditTime(false);
   };
   function handleSelect(date) {
     console.log(date); // native Date object
@@ -50,15 +39,28 @@ const CreateEmail = () => {
 
     // Format the date as YYYY-MM-DD
     const formattedDate = `${year}-${month}-${day}`;
-
+    console.log("formattedDate", formattedDate);
     setchoosedate(formattedDate);
     handleClickInside();
   }
+
+  const submitsaveSubject = (e) => {
+    e.preventDefault();
+    handleUpdateState("subject", subject);
+    handleUpdateState("previewtext", perviewtext);
+    handleUpdateState("entryDate", choosedate);
+    setEditSubject(false);
+  };
   // hello usamasadas
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
       setClickedOutside(true);
     }
+  };
+  const handlesaveTimebtn = (e) => {
+    e.preventDefault();
+    setEditTime(false);
+    handleUpdateState("sendtime", choosedate);
   };
   const handleClickInside = () => setClickedOutside(false);
   useEffect(() => {
@@ -80,7 +82,7 @@ const CreateEmail = () => {
     };
     fetchFrom();
   }, []);
-  console.log(adminEmail);
+  console.log("choosedate", choosedate);
   return (
     <div class="root-3uY95 snipcss-mSWlr">
       <div class="container-2aeSm">
