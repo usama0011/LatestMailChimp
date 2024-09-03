@@ -46,7 +46,7 @@ const Reports = () => {
     day: "numeric", // Day of the month, e.g., "5"
     year: "numeric", // Full year, e.g., "2024"
   });
-
+  console.log("reports", reports);
   return (
     <div>
       <div
@@ -1257,7 +1257,7 @@ const Reports = () => {
                                     Regular Next Web Lines
                                   </p>
                                   <p className="largeid">
-                                    Sent <b>{formatDate(item?.sendtime)}</b>
+                                    Sent <b>{item?.sendtime}</b>
                                     <br />
                                     to {item?.recipients} recipients by you
                                   </p>
