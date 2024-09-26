@@ -4,6 +4,7 @@ import "../styles/AllCompaings.css";
 import axios from "axios";
 const AllCampaings = () => {
   const [allcomapings, setAllComapings] = useState([]);
+  const [currentscreen, setCurrentScreen] = useState("list");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleourhidPages = () => {
@@ -981,362 +982,1331 @@ const AllCampaings = () => {
               <div className="frame-1q4n0 snipcss0-4-246-247">
                 <div className="loading-_VrqD snipcss0-5-247-248"></div>
                 <br />
-
-                <div className="lastUnit">
-                  <h1>Campaigns</h1>{" "}
-                  <div>
-                    <button>View analytics</button>
-                    <button
-                      style={{ backgroundColor: "#1b8a95", color: "white" }}
-                    >
-                      <Link style={{ color: "unset" }} to="/newcomaping">
-                        Create new
-                      </Link>
-                    </button>
-                  </div>{" "}
-                </div>
-                <div
-                  data-dojo-attach-point="switcherContainer"
-                  class="margin-bottom--lv4"
-                >
-                  <p data-dojo-attach-point="selectLabel" class="ddkjsldfj">
-                    Next Web Lines
-                  </p>
-                </div>
-                <div className="audiencemain">
-                  <p style={{ fontSize: "20px", color: "#241c60" }}>
-                    Your aduience has{" "}
-                    <span style={{ color: "#007c89 " }}> 50,000</span> contacts.
-                    <span style={{ color: "#007c89 " }}> 48,795</span> of these
-                    are subscribers.
-                  </p>
-                </div>
-                <div class="">
-                  <div class="maintestwarp">
-                    <div class="wrapper-2GUvc">
-                      <div
-                        role="tablist"
-                        class="boxShadowNone-QWU1Z tabList-2ZCac"
-                      >
-                        <span
-                          style={{ color: "#1b8a95" }}
-                          class="root-TPnFr "
-                          role="tab"
-                          id="mc:89:tabs:0"
-                          tabindex="0"
-                          aria-selected="true"
-                          aria-controls="mc:89:tabs:0:panel"
-                        >
-                          List View
-                        </span>
-                        <span
-                          style={{ paddingLeft: "50px" }}
-                          class="root-TPnFr"
-                          role="tab"
-                          id="mc:89:tabs:1"
-                          tabindex="-1"
-                          aria-selected="false"
-                          aria-controls="mc:89:tabs:1:panel"
-                        >
-                          Calendar View
-                        </span>
+                <header class="root-1rj4d standard-2H4cn header-3IL6q overViewHeaderContainer-2A4X0 snipcss-kC5cZ">
+                  <div class="cluster-3D5Qr nowrap-34OZ-">
+                    <div class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing4-1S_zR">
+                      <div class="stack-1qp4V style-eticP" id="style-eticP">
+                        <h1 class="heading-3-eDQNF root-PihPG">
+                          All campaigns
+                        </h1>
                       </div>
-                      <span
-                        class="tabIndicator-2Ph-g className-CXx7Q"
-                        id="className-CXx7Q"
-                      ></span>
                     </div>
                   </div>
-                </div>
-                <div className="mainpareonecontainer">
-                  <div style={{ display: "flex" }}>
-                    <div className="mymy" style={{ minWidth: "200px" }}>
-                      <div
-                        lang="en"
-                        id="campaigns-nav"
-                        widgetid="campaigns-nav"
+                  <div></div>
+                  <div class="actions-1bN9W cluster-3D5Qr">
+                    <div class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing4-1S_zR">
+                      <button
+                        style={{ border: "1px solid #007C89" }}
+                        class="root-sBgFt container-3-bH7 secondary-1_P2K"
+                        type="button"
                       >
-                        <div
-                          style={{ marginBottom: "10px", fontWeight: "500" }}
-                          class="fwb padding--lv1 margin-bottom--lv1 c-campaignManager_sidebar_title"
-                        >
-                          View by Status
+                        <span class="temporarySpan-2iF2p">View analytics</span>
+                      </button>
+                      <button
+                        style={{ backgroundColor: "#007C89", color: "white" }}
+                        class="root-sBgFt container-3-bH7 primary-33czz"
+                        data-testid="createCampaignButton"
+                        type="button"
+                      >
+                        <span class="temporarySpan-2iF2p">Create</span>
+                      </button>
+                    </div>
+                  </div>
+                </header>
+                {/* listview here */}
+                <div
+                  role="tablist"
+                  class="tabList-JX8Ln tabList-2ZCac snipcss-o6YMC"
+                >
+                  <span
+                    onClick={() => setCurrentScreen("list")}
+                    class="root-TPnFr large-1lNYH"
+                    role="tab"
+                    style={{ color: "#007c89" }}
+                    id="mc:48:tabs:0"
+                    tabindex="0"
+                    aria-selected="true"
+                    aria-controls="mc:48:tabs:0:panel"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      focusable="false"
+                      aria-hidden="true"
+                      class="wink-icon tabIcon-2tRyq"
+                    >
+                      <path d="M5 8a2 2 0 100-4 2 2 0 000 4zm0 6a2 2 0 100-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0zM21 5H9v2h12V5zM9 11h12v2H9v-2zm12 6H9v2h12v-2z"></path>
+                    </svg>
+                    List
+                  </span>
+                  <span
+                    onClick={() => setCurrentScreen("calender")}
+                    class="root-TPnFr large-1lNYH"
+                    role="tab"
+                    id="mc:48:tabs:1"
+                    tabindex="-1"
+                    aria-selected="false"
+                    aria-controls="mc:48:tabs:1:panel"
+                    data-id="ipd-allCampaigns-calendarViewTab"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      focusable="false"
+                      aria-hidden="true"
+                      class="wink-icon tabIcon-2tRyq"
+                    >
+                      <path d="M7 13a1 1 0 100-2 1 1 0 000 2zm0 5a1 1 0 100-2 1 1 0 000 2zm6-6a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2zm6-6a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M3 1a2 2 0 00-2 2v20h22V3a2 2 0 00-2-2H3zm18 7H3v13h18V8z"
+                      ></path>
+                    </svg>
+                    Calendar
+                  </span>
+                </div>
+                <br />
+                {currentscreen === "list" && (
+                  <>
+                    <div
+                      style={{
+                        marginLeft: "30px",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing4-1S_zR snipcss-RhPVa"
+                    >
+                      <div class="root-TXRyV">
+                        <label id="mc:33" for="mc:32" class="">
+                          Type:
+                        </label>
+                        <div class="listbox-1KRYD">
+                          <span
+                            style={{ color: "#007c89" }}
+                            tabindex="0"
+                            class="selectedValue-1AZV5"
+                            id="mc:34-trigger"
+                            aria-labelledby="mc:33"
+                            data-id="ipd-allCampaigns-typeFilter"
+                            role="combobox"
+                            aria-autocomplete="none"
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                          >
+                            <span class="audienceSelectInline-245gP">All</span>
+                            <span
+                              style={{ color: "#007c89" }}
+                              class="indicator-1Co1h"
+                            >
+                              <svg
+                                style={{ color: "#007c89" }}
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                aria-hidden="true"
+                                class="wink-icon"
+                              >
+                                <path
+                                  style={{ color: "#007c89" }}
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                                ></path>
+                              </svg>
+                            </span>
+                          </span>
                         </div>
-                        <ul
-                          class="mybuttonuls"
-                          data-dojo-attach-point="node_bucketList"
+                      </div>
+                      <div class="root-TXRyV">
+                        <label
+                          style={{ fontSize: "14px" }}
+                          id="mc:36"
+                          for="mc:35"
+                          class=""
                         >
-                          <li style={{ backgroundColor: "#efeeea" }}>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1 c-campaignManager_sidebar_link--selected"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/all.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              All
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/ongoing.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Ongoing
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/draft.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Draft
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/completed.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Completed
-                            </a>
-                          </li>
-                        </ul>
-                        <div class="border-bottom-light c-campaignManager_sidebar_divider margin--lv2 margin-left--lv0 margin-right--lv0"></div>
-                        <div
-                          style={{ marginBottom: "10px", fontWeight: "500" }}
-                          class="fwb padding--lv1 margin-bottom--lv1 c-campaignManager_sidebar_title"
-                        >
-                          View by Type
+                          Status:
+                        </label>
+                        <div class="listbox-1KRYD">
+                          <span
+                            tabindex="0"
+                            class="selectedValue-1AZV5"
+                            id="mc:37-trigger"
+                            aria-labelledby="mc:36"
+                            data-id="ipd-allCampaigns-filterBarHeader"
+                            role="combobox"
+                            aria-autocomplete="none"
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                            style={{ color: "#007c89", fontSize: "14px" }}
+                          >
+                            All
+                            <span class="indicator-1Co1h">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                aria-hidden="true"
+                                class="wink-icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                                ></path>
+                              </svg>
+                            </span>
+                          </span>
                         </div>
-                        <ul
-                          class="mybuttonuls"
-                          data-dojo-attach-point="node_typeBucketList"
+                      </div>
+                      <button
+                        class="root-sBgFt root-22EAH triggerButton-3JwWK"
+                        data-testid="all-campaigns-folder-filter-dropdown-trigger"
+                        data-id="ipd-allCampaigns-folderFilterDropdown"
+                        tabindex="0"
+                        aria-expanded="false"
+                        type="button"
+                      >
+                        <div class="triggerText-2XTUy">Folder: </div>
+                        <div
+                          class="dropdownLabel-3HasS"
+                          style={{ color: "#007c89" }}
                         >
-                          <li style={{ backgroundColor: "#efeeea" }}>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1 c-campaignManager_sidebar_link--selected"
+                          All
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          focusable="false"
+                          aria-hidden="true"
+                          class="wink-icon"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                          ></path>
+                        </svg>
+                      </button>
+                      <button
+                        class="root-sBgFt root-22EAH triggerButton-3tOrh"
+                        data-testid="all-campaigns-date-filter-dropdown-trigger"
+                        tabindex="0"
+                        aria-expanded="false"
+                        type="button"
+                      >
+                        <div class="triggerText-1Y4Hy">Date: </div>
+                        <div
+                          data-testid="all-campaigns-date-filter-dropdown-label"
+                          class="dropdownLabel-2F7iI"
+                          style={{ color: "#007c89" }}
+                        >
+                          All
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          focusable="false"
+                          aria-hidden="true"
+                          class="wink-icon"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                          ></path>
+                        </svg>
+                      </button>
+                      <button
+                        class="root-sBgFt root-22EAH clearFilterButton-1FfQC"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span>Clear</span>
+                      </button>
+                      <div class="cluster-3D5Qr nowrap-34OZ-">
+                        <div class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1">
+                          <div class="root-TXRyV">
+                            <label
+                              style={{ color: "black", fontSize: "14px" }}
+                              id="mc:43"
+                              for="mc:42"
+                              class=""
                             >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/all.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              All
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
+                              Sort by:
+                            </label>
+                            <div class="listbox-1KRYD">
+                              <span
+                                tabindex="0"
+                                class="selectedValue-1AZV5"
+                                id="mc:44-trigger"
+                                aria-labelledby="mc:43"
+                                data-id="ipd-allCampaigns-sortDropdown"
+                                data-testid="campaign-sort-dropdown"
+                                role="combobox"
+                                aria-autocomplete="none"
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <span
+                                  style={{ color: "#007C89" }}
+                                  class="selectInline-3cDyn"
+                                >
+                                  Date edited
+                                </span>
+                                <span class="indicator-1Co1h">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                    class="wink-icon"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                                    ></path>
+                                  </svg>
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            class="root-1khsy directionArrow-3M7t6"
+                            data-testid="sort-direction-arrow-DESC"
+                            aria-describedby="mc:45"
+                            type="button"
+                          >
+                            <span class="wink-visually-hidden">
+                              Sort direction toggle
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              focusable="false"
+                              aria-hidden="true"
+                              class="wink-icon"
                             >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/email.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Emails
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/sms-filter.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              SMS
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/automation.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Automations
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/landing-page.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Landing pages
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/ad.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Ads
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/postcard.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Postcards
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/social-post.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Social Posts
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              data-mc-el="bucket-link"
-                              href="#0"
-                              class="c-campaignManager_sidebar_link padding--lv1 border-radius--lv1"
-                            >
-                              <img
-                                class="c-autocomplete_suggestion_iconImage padding-right--lv2"
-                                src="https://cdn-images.mailchimp.com/product/campaigns/nav-icons/survey.svg"
-                              />
-                              <span class="freddicon display--none !deprecated-textColorGray4 padding-right--lv2"></span>{" "}
-                              Surveys
-                            </a>
-                          </li>
-                        </ul>
+                              <path d="M12.782 17.403L13 3h-2l.218 14.402-6.036-5.633-1.364 1.462L12 20.868l8.182-7.637-1.364-1.462-6.036 5.634z"></path>
+                            </svg>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="comapingdetaissl">
-                      <span>
-                        {formattedDate} ({allcomapings?.length})
-                      </span>
-                      <hr />
-                      {loading
-                        ? "loading...."
-                        : allcomapings?.map((item) => (
-                            <>
-                              <div className="comapingdetail">
-                                <div>
-                                  <input type="checkbox" name="" id="" />
-                                </div>
-                                <div className="emailsection">
-                                  {/* icon is here  */}
-                                  <p className="mail">{item?.comapingemail}</p>
-                                  <p className="regularemail">
-                                    {item?.previewtext}
-                                  </p>
-                                  <p className="largeid">
-                                    Sent <b>{formatDate(item?.sendtime)}</b> by
-                                    you
-                                  </p>
-                                </div>
-                                <div className="draftnewuilder">
-                                  <p
-                                    style={{
-                                      backgroundColor: "#cae0e1",
-                                      fontWeight: "400",
-                                      color: "#004e56",
-                                    }}
-                                  >
-                                    Sent
-                                  </p>
-                                </div>
-                                <div className="clickonpend">
-                                  <div>
-                                    <div className="oneone">
-                                      {item?.vistitPercentage}%
+                    <br />
+                    <div style={{ marginLeft: "50px" }}>
+                      <tr
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        class="slatHeader-DwUpr slatHeaderRec-3dinu snipcss0-0-0-1 snipcss-oS9dl"
+                        data-id="ipd-allCampaigns-slatsHeader"
+                      >
+                        <th
+                          style={{ marginRight: "290px" }}
+                          scope="col"
+                          class="snipcss0-1-1-2"
+                        >
+                          <div class="root-1olwd checkbox-2UQgU snipcss0-2-2-3">
+                            <input
+                              class="input-2v40B noMargin-2qkhq snipcss0-3-3-4"
+                              id="mc:46"
+                              type="checkbox"
+                              indeterminate="false"
+                              aria-checked="false"
+                              tabindex="0"
+                            />
+                            <div class="text-vFMr3 snipcss0-3-3-5">
+                              <label
+                                id="mc:47"
+                                for="mc:46"
+                                class="wink-visually-hidden snipcss0-4-5-6"
+                              >
+                                Select all 25 on page
+                              </label>
+                            </div>
+                          </div>
+                        </th>
+
+                        <th
+                          scope="col"
+                          class="statusContainerV2-2k0I- snipcss0-1-1-11"
+                        >
+                          <div class="slatHeaderItem-2DwOS snipcss0-2-11-12">
+                            <p class="root-3TDqk small-secondary-3_Rq2 snipcss0-3-12-13">
+                              Status
+                            </p>
+                          </div>
+                        </th>
+                        <th
+                          style={{ marginLeft: "140px" }}
+                          scope="col"
+                          class="audienceContainerV2-3aq1c snipcss0-1-1-14"
+                        >
+                          <div class="slatHeaderItem-2DwOS snipcss0-2-14-15">
+                            <p class="root-3TDqk small-secondary-3_Rq2 snipcss0-3-15-16">
+                              Audience
+                            </p>
+                          </div>
+                        </th>
+                        <th
+                          scope="col"
+                          style={{ marginLeft: "140px" }}
+                          class="analytics-ATHdM analyticsContainerV2-H5c4j snipcss0-1-1-17"
+                        >
+                          <div class="slatHeaderItem-2DwOS snipcss0-2-17-18">
+                            <p class="root-3TDqk small-secondary-3_Rq2 snipcss0-3-18-19">
+                              Analytics
+                            </p>
+                          </div>
+                        </th>
+                        <th
+                          style={{ marginLeft: "250px" }}
+                          scope="col"
+                          class="snipcss0-1-1-7"
+                        >
+                          <div class="slatHeaderItem-2DwOS snipcss0-2-7-8">
+                            <p class="root-3TDqk small-secondary-3_Rq2 name-3FsBc snipcss0-3-8-9">
+                              Actions
+                            </p>
+                          </div>
+                        </th>
+                      </tr>
+                    </div>
+                    <div
+                      style={{ marginLeft: "20px" }}
+                      className="mainpareonecontainer"
+                    >
+                      <div style={{ display: "flex" }}>
+                        <div className="comapingdetaissl">
+                          {loading
+                            ? "loading...."
+                            : allcomapings?.map((item) => (
+                                <>
+                                  <div className="comapingdetail">
+                                    <div>
+                                      <input type="checkbox" name="" id="" />
                                     </div>
-                                    <div className="two">{item?.visits}</div>
-                                    <div>opened</div>
-                                  </div>
-                                  <div>
-                                    <div className="oneone">
-                                      {item?.clickPercentage}%
+                                    <div className="emailsection">
+                                      {/* icon is here  */}
+                                      <p className="mail">
+                                        {item?.comapingemail}
+                                      </p>
+                                      <p className="regularemail">
+                                        {item?.previewtext}
+                                      </p>
+                                      <p className="largeid">
+                                        Sent <b>{formatDate(item?.sendtime)}</b>{" "}
+                                        by you
+                                      </p>
                                     </div>
-                                    <div className="two">{item?.clicks}</div>
-                                    <div>clicked</div>
-                                  </div>
-                                </div>
-                                <div
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() => handleEditClick(item._id)}
-                                  className="editdelete"
-                                >
-                                  <p>Edit</p>
-                                  <p>
-                                    <svg
-                                      className="arrodddd"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 512 512"
+                                    <div className="draftnewuilder">
+                                      <p
+                                        style={{
+                                          backgroundColor: "#D8EACC",
+                                          fontWeight: "400",
+                                          color: "#004e56",
+                                        }}
+                                      >
+                                        Sent
+                                      </p>
+                                    </div>
+                                    <div
+                                      style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                      }}
                                     >
-                                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                      <span>selani media</span>
+                                      <span>11 recipients</span>{" "}
+                                    </div>
+                                    <div
+                                      style={{ marginLeft: "105px" }}
+                                      className="clickonpend"
+                                    >
+                                      <div>
+                                        <div className="oneone">
+                                          {item?.vistitPercentage}%
+                                        </div>
+                                        <div className="two">
+                                          {item?.visits}
+                                        </div>
+                                        <div>opened</div>
+                                      </div>
+                                      <div>
+                                        <div className="oneone">
+                                          {item?.clickPercentage}%
+                                        </div>
+                                        <div className="two">
+                                          {item?.clicks}
+                                        </div>
+                                        <div>clicked</div>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <button
+                                        onClick={() => navigate(item._id)}
+                                      >
+                                        View Report
+                                      </button>
+                                    </div>
+                                    {/* Edit */}
+                                  </div>
+                                  <hr />
+                                </>
+                              ))}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Pagination */}
+                    <br />
+                    <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "end",
+                        }}
+                        class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing4-1S_zR snipcss-6cxgP"
+                      >
+                        <div
+                          style={{ display: "flex", alignItems: "center" }}
+                          class="resultsContainer-1yPT2 cluster-3D5Qr"
+                        >
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                            class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1 spacing1-3SkHe"
+                          >
+                            <span class="root-3TDqk medium-3AcAC">
+                              Showing results{" "}
+                            </span>
+                            <p
+                              style={{ marginTop: "16px" }}
+                              class="root-3TDqk medium-bold-2nZ0J"
+                            >
+                              1 - 4 of 4
+                            </p>
+                          </div>
+                        </div>
+                        <div class="buttonContainer-BXxQ3">
+                          <button
+                            class="root-1khsy"
+                            disabled=""
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span class="wink-visually-hidden">
+                              Go to first page
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              focusable="false"
+                              aria-hidden="true"
+                              class="wink-icon"
+                            >
+                              <path d="M9 6H7v12h2V6zm8.707 1.707l-1.414-1.414L10.586 12l5.707 5.707 1.414-1.414L13.414 12l4.293-4.293z"></path>
+                            </svg>
+                          </button>
+                          <button
+                            class="root-1khsy"
+                            disabled=""
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span class="wink-visually-hidden">
+                              Go to previous page
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              focusable="false"
+                              aria-hidden="true"
+                              class="wink-icon"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M13.293 6.293l1.414 1.414L10.414 12l4.293 4.293-1.414 1.414L7.586 12l5.707-5.707z"
+                              ></path>
+                            </svg>
+                          </button>
+                          <span class="root-3TDqk medium-3AcAC">Page</span>
+                          <div class="inputContainer-1-mZv">
+                            <div class="root-2RFjU inputNumber-2Ooz5">
+                              <div class="before-2EDUs">
+                                <label
+                                  class="mcds-label-default wink-visually-hidden"
+                                  id="mc:84"
+                                  for="mc:83"
+                                >
+                                  Pagination input
+                                </label>
+                              </div>
+                              <input
+                                value={1}
+                                style={{
+                                  width: "10px",
+                                  height: "20px",
+                                  border: "1px solid gray",
+                                  marginTop: "20px",
+                                }}
+                                type="text"
+                              />
+                            </div>
+                          </div>
+                          <span class="root-3TDqk medium-3AcAC"> of 1</span>
+                          <button
+                            class="root-1khsy"
+                            disabled=""
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span class="wink-visually-hidden">
+                              Go to next page
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              focusable="false"
+                              aria-hidden="true"
+                              class="wink-icon"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M13.586 12L9.293 7.707l1.414-1.414L16.414 12l-5.707 5.707-1.414-1.414L13.586 12z"
+                              ></path>
+                            </svg>
+                          </button>
+                          <button
+                            class="root-1khsy"
+                            disabled=""
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span class="wink-visually-hidden">
+                              Go to last page
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              focusable="false"
+                              aria-hidden="true"
+                              class="wink-icon"
+                            >
+                              <path d="M15 6h2v12h-2zM6.293 7.707L10.586 12l-4.293 4.293 1.414 1.414L13.414 12 7.707 6.293z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+                {currentscreen === "calender" && (
+                  <>
+                    <div
+                      style={{ margin: "30px" }}
+                      class="tabContent-1usFA snipcss-hBmLB"
+                    >
+                      <div class="clusterContainer-3znJw cluster-3D5Qr">
+                        <div class="alignItemsCenter-1HCiJ justifyFlexStart-ejJl1">
+                          <div class="root-TXRyV">
+                            <label id="mc:97" for="mc:96" class="">
+                              Holidays:
+                            </label>
+                            <div class="listbox-1KRYD">
+                              <span
+                                tabindex="0"
+                                class="selectedValue-1AZV5"
+                                id="mc:98-trigger"
+                                aria-labelledby="mc:97"
+                                role="combobox"
+                                aria-autocomplete="none"
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <p
+                                  style={{
+                                    color: "#007c89",
+                                    marginTop: "10px",
+                                  }}
+                                  class="root-3TDqk small-bold-6R-6E"
+                                >
+                                  None
+                                </p>
+                                <span class="indicator-1Co1h">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                    class="wink-icon"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                                    ></path>
+                                  </svg>
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="calendarV2-_nFeP">
+                        <div class="calendarHeaderV2-23E7R">
+                          <div class="navigationV2-3meU5">
+                            <button class="root-1khsy" type="button">
+                              <span class="wink-visually-hidden">
+                                Previous month
+                              </span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                aria-hidden="true"
+                                class="wink-icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M13.293 6.293l1.414 1.414L10.414 12l4.293 4.293-1.414 1.414L7.586 12l5.707-5.707z"
+                                ></path>
+                              </svg>
+                            </button>
+                            <button class="root-1khsy" type="button">
+                              <span class="wink-visually-hidden">
+                                Next month
+                              </span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                aria-hidden="true"
+                                class="wink-icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M13.586 12L9.293 7.707l1.414-1.414L16.414 12l-5.707 5.707-1.414-1.414L13.586 12z"
+                                ></path>
+                              </svg>
+                            </button>
+                            <div
+                              class="currentTimePeriodV2-1pWfM"
+                              id="calendarheader"
+                            >
+                              <span class="root-3TDqk large-bold-3R9__">
+                                September 2024
+                              </span>
+                            </div>
+                          </div>
+                          <div class="headerRightV2-3J00J">
+                            <div class="todayLink-rVV2v">
+                              <span
+                                style={{ color: "#007c89" }}
+                                class="root-3TDqk medium-bold-2nZ0J"
+                                tabindex="0"
+                                role="link"
+                              >
+                                Today
+                              </span>
+                            </div>
+                            <div class="viewDropdown-2712q">
+                              <div class="root-TXRyV">
+                                <label
+                                  id="mc:100"
+                                  for="mc:99"
+                                  class="wink-visually-hidden"
+                                >
+                                  Select the view of the calendar
+                                </label>
+                                <select id="mc:99">
+                                  <option value="day">Day</option>
+                                  <option
+                                    value="month"
+                                    style={{ color: "#007c89" }}
+                                  >
+                                    Month
+                                  </option>
+                                  <option value="week">Week</option>
+                                </select>
+                                <span
+                                  data-testid="selectedValue"
+                                  class="selectedValue-1AZV5"
+                                  aria-hidden="true"
+                                  style={{ color: "#007c89" }}
+                                >
+                                  Month
+                                  <span class="indicator-1Co1h">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 24 24"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      class="wink-icon"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M6.293 10.707l1.414-1.414L12 13.586l4.293-4.293 1.414 1.414L12 16.414l-5.707-5.707z"
+                                      ></path>
                                     </svg>
-                                  </p>
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="sdoToggleV2-10_Fa">
+                              <div class="root-3VS64 hideLabel-1M2Ld">
+                                <div class="content-1vvD0">
+                                  <div id="mc:101" class="wink-visually-hidden">
+                                    Optimize dates:
+                                  </div>
+                                </div>
+                                <div class="toggleGroup-3QVDw">
+                                  <button
+                                    class="toggle-2Rjco"
+                                    type="button"
+                                    aria-pressed="false"
+                                    aria-labelledby="mc:101"
+                                    data-pendo-target="sdo"
+                                  >
+                                    <span class="knob-iNyaw"></span>
+                                  </button>
                                 </div>
                               </div>
-                              <hr />
-                            </>
-                          ))}
+                              <button class="root-1khsy" type="button">
+                                <span class="wink-visually-hidden">
+                                  Optimize dates info
+                                </span>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  focusable="false"
+                                  aria-hidden="true"
+                                  class="wink-icon"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm1-16.25a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM9 12v-1l2-1h2v6l2 1v1H9v-1l2-1v-4H9z"
+                                  ></path>
+                                </svg>
+                              </button>
+                              <span role="status" aria-atomic="true">
+                                <span class="wink-visually-hidden"></span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          role="grid"
+                          aria-labelledby="calendarheader"
+                          class="calendarBody-3rONN"
+                        >
+                          <div role="rowgroup">
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Sunday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Monday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Tuesday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Wednesday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Thursday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Friday</p>
+                              </div>
+                              <div class="dayOfWeek-1UE3n" role="columnheader">
+                                <p class="root-3TDqk medium-3AcAC">Saturday</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="calendarGrid-2BVQr" role="rowgroup">
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div
+                                class="dayCell-3T-bc style-9mybX"
+                                data-calendar-event-anchor="anchor-2024-9-1"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725130800000"
+                                role="gridcell"
+                                id="style-9mybX"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">1</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-nNB5k"
+                                data-calendar-event-anchor="anchor-2024-9-2"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725217200000"
+                                role="gridcell"
+                                id="style-nNB5k"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">2</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-Z4own"
+                                data-calendar-event-anchor="anchor-2024-9-3"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725303600000"
+                                role="gridcell"
+                                id="style-Z4own"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">3</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-fsl4e"
+                                data-calendar-event-anchor="anchor-2024-9-4"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725390000000"
+                                role="gridcell"
+                                id="style-fsl4e"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">4</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-7sRB8"
+                                data-calendar-event-anchor="anchor-2024-9-5"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725476400000"
+                                role="gridcell"
+                                id="style-7sRB8"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">5</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-EFood"
+                                data-calendar-event-anchor="anchor-2024-9-6"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725562800000"
+                                role="gridcell"
+                                id="style-EFood"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">6</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-oXlew"
+                                data-calendar-event-anchor="anchor-2024-9-7"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725649200000"
+                                role="gridcell"
+                                id="style-oXlew"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">7</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                            </div>
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div
+                                class="dayCell-3T-bc style-kVb21"
+                                data-calendar-event-anchor="anchor-2024-9-8"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725735600000"
+                                role="gridcell"
+                                id="style-kVb21"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">8</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-CcgBO"
+                                data-calendar-event-anchor="anchor-2024-9-9"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725822000000"
+                                role="gridcell"
+                                id="style-CcgBO"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">9</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-Rt29R"
+                                data-calendar-event-anchor="anchor-2024-9-10"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725908400000"
+                                role="gridcell"
+                                id="style-Rt29R"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">10</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-b5WhC"
+                                data-calendar-event-anchor="anchor-2024-9-11"
+                                data-testid="dayCell"
+                                data-day-timestamp="1725994800000"
+                                role="gridcell"
+                                id="style-b5WhC"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">11</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-73WRS"
+                                data-calendar-event-anchor="anchor-2024-9-12"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726081200000"
+                                role="gridcell"
+                                id="style-73WRS"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">12</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-PwByI"
+                                data-calendar-event-anchor="anchor-2024-9-13"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726167600000"
+                                role="gridcell"
+                                id="style-PwByI"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">13</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-USbG7"
+                                data-calendar-event-anchor="anchor-2024-9-14"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726254000000"
+                                role="gridcell"
+                                id="style-USbG7"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">14</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                            </div>
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div
+                                class="dayCell-3T-bc style-WEw4K"
+                                data-calendar-event-anchor="anchor-2024-9-15"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726340400000"
+                                role="gridcell"
+                                id="style-WEw4K"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">15</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-5VJwT"
+                                data-calendar-event-anchor="anchor-2024-9-16"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726426800000"
+                                role="gridcell"
+                                id="style-5VJwT"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">16</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-DU3jS"
+                                data-calendar-event-anchor="anchor-2024-9-17"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726513200000"
+                                role="gridcell"
+                                id="style-DU3jS"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">17</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-FJy3V"
+                                data-calendar-event-anchor="anchor-2024-9-18"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726599600000"
+                                role="gridcell"
+                                id="style-FJy3V"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">18</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-NZmo4"
+                                data-calendar-event-anchor="anchor-2024-9-19"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726686000000"
+                                role="gridcell"
+                                id="style-NZmo4"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">19</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-VYHPj"
+                                data-calendar-event-anchor="anchor-2024-9-20"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726772400000"
+                                role="gridcell"
+                                id="style-VYHPj"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">20</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-x38KK"
+                                data-calendar-event-anchor="anchor-2024-9-21"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726858800000"
+                                role="gridcell"
+                                id="style-x38KK"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">21</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                            </div>
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div
+                                class="dayCell-3T-bc style-iUsXD"
+                                data-calendar-event-anchor="anchor-2024-9-22"
+                                data-testid="dayCell"
+                                data-day-timestamp="1726945200000"
+                                role="gridcell"
+                                id="style-iUsXD"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">22</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-rKFoo"
+                                data-calendar-event-anchor="anchor-2024-9-23"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727031600000"
+                                role="gridcell"
+                                id="style-rKFoo"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">23</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-CRAk5"
+                                data-calendar-event-anchor="anchor-2024-9-24"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727118000000"
+                                role="gridcell"
+                                id="style-CRAk5"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">24</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-l7NmP"
+                                data-calendar-event-anchor="anchor-2024-9-25"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727204400000"
+                                role="gridcell"
+                                id="style-l7NmP"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">25</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-z1DSk"
+                                data-calendar-event-anchor="anchor-2024-9-26"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727290800000"
+                                role="gridcell"
+                                id="style-z1DSk"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">26</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-cpiCV"
+                                data-calendar-event-anchor="anchor-2024-9-27"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727377200000"
+                                role="gridcell"
+                                id="style-cpiCV"
+                              >
+                                <div class="day-z-9Mo isToday-2xkBi">
+                                  <p class="root-3TDqk small-bold-6R-6E">27</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc style-Nat8w"
+                                data-calendar-event-anchor="anchor-2024-9-28"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727463600000"
+                                role="gridcell"
+                                id="style-Nat8w"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">28</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                            </div>
+                            <div class="calendarWeek-9yu4r" role="row">
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-PP3Fk"
+                                data-calendar-event-anchor="anchor-2024-9-29"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727550000000"
+                                role="gridcell"
+                                id="style-PP3Fk"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">29</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-lJzVd"
+                                data-calendar-event-anchor="anchor-2024-9-30"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727636400000"
+                                role="gridcell"
+                                id="style-lJzVd"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">30</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-Z9ONG"
+                                data-calendar-event-anchor="anchor-2024-10-1"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727722800000"
+                                role="gridcell"
+                                id="style-Z9ONG"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">1</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-3W4TB"
+                                data-calendar-event-anchor="anchor-2024-10-2"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727809200000"
+                                role="gridcell"
+                                id="style-3W4TB"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">2</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-l1iSn"
+                                data-calendar-event-anchor="anchor-2024-10-3"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727895600000"
+                                role="gridcell"
+                                id="style-l1iSn"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">3</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-QzHsi"
+                                data-calendar-event-anchor="anchor-2024-10-4"
+                                data-testid="dayCell"
+                                data-day-timestamp="1727982000000"
+                                role="gridcell"
+                                id="style-QzHsi"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">4</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                              <div
+                                class="dayCell-3T-bc lastRow-q_EYk style-ddBQe"
+                                data-calendar-event-anchor="anchor-2024-10-5"
+                                data-testid="dayCell"
+                                data-day-timestamp="1728068400000"
+                                role="gridcell"
+                                id="style-ddBQe"
+                              >
+                                <div class="day-z-9Mo">
+                                  <p class="root-3TDqk small-bold-6R-6E">5</p>
+                                </div>
+                                <div role="list" class="eventList-1MNcv"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </>
+                )}
+                <br />
+                <br />
               </div>
             </main>
           </div>
