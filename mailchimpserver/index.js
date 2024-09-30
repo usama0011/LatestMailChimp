@@ -7,6 +7,7 @@ import newcompaingroute from "./routes/newcompaingroute.js";
 import newmessagesroute from "./routes/newcontactroute.js";
 import reportroute from "./routes/reportroute.js";
 import fromroute from "./routes/fromroute.js";
+import contactRoutes from "./routes/contactroute.js";
 
 const app = express();
 dotenv.config();
@@ -35,6 +36,7 @@ app.use("/api/newcompaing", newcompaingroute);
 app.use("/api/newcontact", newmessagesroute);
 app.use("/api/reports", reportroute);
 app.use("/api/from", fromroute);
+app.use("/api/contacts", contactRoutes);
 // Error handling middleware
 // Error handling middleware
 app.use((err, req, res, next) => {

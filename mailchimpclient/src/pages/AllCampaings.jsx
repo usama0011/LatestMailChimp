@@ -1022,7 +1022,11 @@ const AllCampaings = () => {
                     onClick={() => setCurrentScreen("list")}
                     class="root-TPnFr large-1lNYH"
                     role="tab"
-                    style={{ color: "#007c89" }}
+                    style={{
+                      color: "#007c89",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                     id="mc:48:tabs:0"
                     tabindex="0"
                     aria-selected="true"
@@ -1040,6 +1044,7 @@ const AllCampaings = () => {
                     List
                   </span>
                   <span
+                    style={{ display: "flex", alignItems: "center" }}
                     onClick={() => setCurrentScreen("calender")}
                     class="root-TPnFr large-1lNYH"
                     role="tab"

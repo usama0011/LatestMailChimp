@@ -58,6 +58,7 @@ import EditReport from "./EditReport";
 import AddFrom from "./AddFrom";
 import ViewFroms from "./ViewFroms";
 import EditMyFrom from "./EditMyFrom";
+import FileUPloadContact from "./FileUPloadContact";
 
 const InitilizeApp = () => {
   return (
@@ -70,6 +71,7 @@ const InitilizeApp = () => {
       <Route path="/hideeditcompaing/:id" element={<HideEditComaping />} />
       <Route path="/viewreport/:id" element={<UpdateReport />} />
       <Route path="/hidepages" element={<HidePages />} />
+      <Route path="/fileuplaods" element={<FileUPloadContact />} />
       <Route path="/addcontacts" element={<AddContact />} />
       <Route path="/email/editor" element={<TestEditor />} />
       <Route path="/allcompaings/:id" element={<ViewCompaing />} />
@@ -112,11 +114,23 @@ const InitilizeApp = () => {
       <Route path="/signuplandingpage" element={<SignUpLandingPage />} />
       <Route path="/newcampaingsurverys" element={<Survays />} />
       <Route path="/transactional" element={<TransactionalEmail />} />
-      <Route path="/newcampaingfacebookinstaads" element={<FacebookInstaAd />} />
-      <Route path="/newcampainggooglemarketingads" element={<GoogleMarktingAd />} />
+      <Route
+        path="/newcampaingfacebookinstaads"
+        element={<FacebookInstaAd />}
+      />
+      <Route
+        path="/newcampainggooglemarketingads"
+        element={<GoogleMarktingAd />}
+      />
       <Route path="/newcampaing/createemail" element={<CreateEmail />} />
-      <Route path="/newcampainpostcardonetimesend" element={<PostCardOneTimeSend />} />
-      <Route path="/newcampainpostcardonerecurring" element={<PostCardRecurring />} />
+      <Route
+        path="/newcampainpostcardonetimesend"
+        element={<PostCardOneTimeSend />}
+      />
+      <Route
+        path="/newcampainpostcardonerecurring"
+        element={<PostCardRecurring />}
+      />
       <Route path="/newcampainpostabanddone" element={<AbandonedCart />} />
       <Route path="/newcampaingsocialpost" element={<SocialPost />} />
       <Route
