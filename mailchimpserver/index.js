@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 // Define a simple route
 app.get("/", (req, res) => {
-  res.status(200).json("App Work 100% Bitviseror");
+  res.status(200).json("App Work 100% Latest MailChimp");
 });
 
 // Start router from here
