@@ -965,13 +965,23 @@ const ViewCompaing = () => {
                 </div>
                 <div class="">
                   <div class="maintestwarp">
-                    <div class="wrapper-2GUvc">
+                    <div
+                      className={
+                        currentpage === "overview"
+                          ? "wrapper-2GUvc"
+                          : "jdjflkajdfl"
+                      }
+                    >
                       {/* here we go here */}
                       <div role="tablist" class=" tabList-2ZCac">
                         <span
                           onClick={() => setcurrentpage("overview")}
-                          style={{ color: "#1b8a95" }}
-                          class="root-TPnFr "
+                          style={
+                            currentpage === "overview"
+                              ? { color: "#1b8a95" }
+                              : { color: "black" }
+                          }
+                          className={`root-TPnFr`}
                           role="tab"
                           id="mc:89:tabs:0"
                           tabindex="0"
@@ -980,24 +990,51 @@ const ViewCompaing = () => {
                         >
                           Overview
                         </span>
-
-                        <span
-                          onClick={() => setcurrentpage("clickperformance")}
-                          style={{ paddingLeft: "50px", color: "black" }}
-                          class="root-TPnFr"
-                          role="tab"
-                          id="mc:89:tabs:1"
-                          tabindex="-1"
-                          aria-selected="false"
-                          aria-controls="mc:89:tabs:1:panel"
+                        <div
+                          className={
+                            currentpage === "clickperformance"
+                              ? "wrapper-2GUvc"
+                              : "jdjflkajdfl"
+                          }
                         >
-                          <a
-                            href="#clickperformance"
-                            style={{ color: "unset" }}
+                          <div
+                            style={
+                              currentpage === "clickperformance"
+                                ? { borderBottom: "4px solid #017b89" }
+                                : { borderBottom: "none" }
+                            }
+                            role="tablist"
+                            class=" tabList-2ZCac"
                           >
-                            Click Performance
-                          </a>
-                        </span>
+                            <span
+                              onClick={() => setcurrentpage("clickperformance")}
+                              style={
+                                currentpage === "clickperformance"
+                                  ? { paddingLeft: "50px", color: "#017b89" }
+                                  : { paddingLeft: "50px", color: "black" }
+                              }
+                              className={`root-TPnFr ${
+                                currentpage === "clickperformance"
+                                  ? "wrapper-2GUvc"
+                                  : ""
+                              }`}
+                              role="tab"
+                              id="mc:89:tabs:1"
+                              tabindex="-1"
+                              aria-selected="false"
+                              aria-controls="mc:89:tabs:1:panel"
+                            >
+                              <a
+                                href="#clickperformance"
+                                style={{ color: "unset" }}
+                              >
+                                Click Performance
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+                        {/* here we go here */}
+
                         <span
                           onClick={() => setcurrentpage("recipientactivity")}
                           style={{ paddingLeft: "50px", color: "black" }}

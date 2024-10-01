@@ -23,7 +23,8 @@ try {
   process.exit(1); // Exit the process if unable to connect to MongoDB
 }
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
+
 app.use(express.json());
 app.use(cookieParser());
 
