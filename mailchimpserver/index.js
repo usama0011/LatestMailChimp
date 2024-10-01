@@ -22,8 +22,14 @@ try {
   console.error("Error connecting to MongoDB:", error.message);
   process.exit(1); // Exit the process if unable to connect to MongoDB
 }
-
-app.use(cors({ origin: "https://latest-mail-chimp-client.vercel.app/" }));
+// Allow specific origin
+const corsOptions = {
+  origin: "https://latest-mail-chimp-client.vercel.app",
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
 
 app.use(express.json());
 app.use(cookieParser());
