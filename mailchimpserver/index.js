@@ -23,7 +23,7 @@ try {
   process.exit(1); // Exit the process if unable to connect to MongoDB
 }
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://latest-mail-chimp-client.vercel.app/" }));
 
 app.use(express.json());
 app.use(cookieParser());
