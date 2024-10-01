@@ -966,10 +966,8 @@ const ViewCompaing = () => {
                 <div class="">
                   <div class="maintestwarp">
                     <div class="wrapper-2GUvc">
-                      <div
-                        role="tablist"
-                        class="boxShadowNone-QWU1Z tabList-2ZCac"
-                      >
+                      {/* here we go here */}
+                      <div role="tablist" class=" tabList-2ZCac">
                         <span
                           onClick={() => setcurrentpage("overview")}
                           style={{ color: "#1b8a95" }}
@@ -1788,6 +1786,38 @@ const ViewCompaing = () => {
                     </div>
                     {/* 24 hours grpah */}
                     <div>
+                      <div
+                        style={{
+                          marginLeft: "35px",
+                          marginTop: "50px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                        class="line legend"
+                      >
+                        {" "}
+                        <h3 class="unit size1of2 maintain-width">
+                          24-hour performance
+                        </h3>{" "}
+                        <div class="lastUnit size1of2">
+                          {" "}
+                          <ul
+                            style={{ display: "flex", alignItems: "center" }}
+                            class="linear-list float-right nofloat-small dataViz--combo1"
+                          >
+                            {" "}
+                            <li>
+                              <span class="opens dataViz--color1"></span>
+                              Opens
+                            </li>{" "}
+                            <li>
+                              <span class="clicks dataViz--color2"></span>
+                              Clicks
+                            </li>{" "}
+                          </ul>{" "}
+                        </div>{" "}
+                      </div>{" "}
                       <div>
                         {" "}
                         <div
@@ -1795,26 +1825,6 @@ const ViewCompaing = () => {
                           class="line sub-section perf-chart"
                         >
                           {" "}
-                          <div class="line legend">
-                            {" "}
-                            <h3 class="unit size1of2 maintain-width">
-                              24-hour performance
-                            </h3>{" "}
-                            <div class="lastUnit size1of2">
-                              {" "}
-                              <ul class="linear-list float-right nofloat-small dataViz--combo1">
-                                {" "}
-                                <li>
-                                  <span class="opens dataViz--color1"></span>
-                                  Opens
-                                </li>{" "}
-                                <li>
-                                  <span class="clicks dataViz--color2"></span>
-                                  Clicks
-                                </li>{" "}
-                              </ul>{" "}
-                            </div>{" "}
-                          </div>{" "}
                           <div
                             id="performance-timeseries-data"
                             style={{
@@ -3010,9 +3020,14 @@ const ViewCompaing = () => {
                             </div>
                           </div>{" "}
                         </div>
+                        <h3
+                          style={{ marginLeft: "0px" }}
+                          class="lastUnit size1of1"
+                        >
+                          View more
+                        </h3>{" "}
                         <div class="line sub-section">
                           {" "}
-                          <h3 class="lastUnit size1of1">View more</h3>{" "}
                           <div class="lastUnit size1of1">
                             {" "}
                             <div data-mc-el="subscriberOpenContainer">
@@ -3431,13 +3446,13 @@ const ViewCompaing = () => {
                       </div>
                     </section>
                     <br />
+                    <h3 class="lastUnit size1of1">
+                      Top locations by opens
+                    </h3>{" "}
                     <div class="line sub-section">
                       {" "}
                       <div class="sub-section">
                         {" "}
-                        <h3 class="lastUnit size1of1">
-                          Top locations by opens
-                        </h3>{" "}
                         <div id="loc-open-tbl" class="unit size3of8">
                           {" "}
                           <ul class="dotted-list">

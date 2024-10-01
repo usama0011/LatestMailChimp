@@ -4562,7 +4562,6 @@ li > a {
 }
 
 .mainpareonecontainer {
-  padding-top: 30px;
   padding-left: 35px;
 }
 
@@ -6600,4 +6599,61 @@ select {
   border-bottom: none;
   height: 100px;
   z-index: 1;
+}
+wink-icon {
+  display: inline-block;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: 72px;
+  max-height: 72px;
+  height: 22px;
+  width: 22px;
+  fill: rgba(36, 28, 21, 0.65);
+}
+
+.wink-icon {
+  min-width: var(--icon-min-size, calc(1.6rem * var(--font-ratio)));
+  min-height: var(--icon-min-size, calc(1.6rem * var(--font-ratio)));
+  max-width: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
+  max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
+  height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
+  width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
+  fill: currentColor;
+  display: inline-block;
+}
+
+* {
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.detailIcon-1_cym,
+.detailIcon-1_cym {
+  color: var(--text-secondary-color);
+  width: 18px;
+}
+
+*,
+:before,
+:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+.wink ::before,
+.wink ::after {
+  box-sizing: border-box;
+}
+
+.wink *,
+.wink ::before,
+.wink ::after {
+  box-sizing: border-box;
+}
+
+:selection {
+  color: var(--legacy-text-primary-color);
+  background: rgba(255, 113, 208, 0.2);
 }

@@ -59,6 +59,7 @@ import AddFrom from "./AddFrom";
 import ViewFroms from "./ViewFroms";
 import EditMyFrom from "./EditMyFrom";
 import FileUPloadContact from "./FileUPloadContact";
+import UploadLargeData from "./UploadContacts";
 
 const InitilizeApp = () => {
   return (
@@ -114,6 +115,7 @@ const InitilizeApp = () => {
       <Route path="/signuplandingpage" element={<SignUpLandingPage />} />
       <Route path="/newcampaingsurverys" element={<Survays />} />
       <Route path="/transactional" element={<TransactionalEmail />} />
+      <Route path="/uploadlargedta" element={<UploadLargeData />} />
       <Route
         path="/newcampaingfacebookinstaads"
         element={<FacebookInstaAd />}

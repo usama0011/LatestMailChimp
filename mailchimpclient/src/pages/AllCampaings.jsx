@@ -67,7 +67,7 @@ const AllCampaings = () => {
     day: "numeric", // Day of the month, e.g., "5"
     year: "numeric", // Full year, e.g., "2024"
   });
-
+  console.log("currentall compaings", allcomapings);
   return (
     <div>
       <div
@@ -1026,6 +1026,8 @@ const AllCampaings = () => {
                       color: "#007c89",
                       display: "flex",
                       alignItems: "center",
+                      borderBottom:
+                        currentscreen === "list" ? "5px solid #007C89" : "",
                     }}
                     id="mc:48:tabs:0"
                     tabindex="0"
@@ -1044,7 +1046,12 @@ const AllCampaings = () => {
                     List
                   </span>
                   <span
-                    style={{ display: "flex", alignItems: "center" }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      borderBottom:
+                        currentscreen === "calender" ? "5px solid #007C89" : "",
+                    }}
                     onClick={() => setCurrentScreen("calender")}
                     class="root-TPnFr large-1lNYH"
                     role="tab"
@@ -1300,7 +1307,7 @@ const AllCampaings = () => {
                       </div>
                     </div>
                     <br />
-                    <div style={{ marginLeft: "50px" }}>
+                    <div style={{ marginLeft: "50px", marginBottom: "0" }}>
                       <tr
                         style={{
                           display: "flex",
@@ -1396,15 +1403,48 @@ const AllCampaings = () => {
                                     </div>
                                     <div className="emailsection">
                                       {/* icon is here  */}
-                                      <p className="mail">
+                                      <p
+                                        className="mail"
+                                        style={{ fontWeight: 500 }}
+                                      >
                                         {item?.comapingemail}
                                       </p>
-                                      <p className="regularemail">
-                                        {item?.previewtext}
+                                      <p
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }}
+                                        className="regularemail"
+                                      >
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 24 24"
+                                          focusable="false"
+                                          aria-hidden="true"
+                                          class="wink-icon detailIcon-1_cym snipcss-kXU9S"
+                                          data-testid="regular-icon"
+                                        >
+                                          <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zM3 5h18v.57L12.101 14h-.203L3 5.57V5zm0 3.325v7.891l4.219-3.894L3 8.325zM3 19v-.062L8.674 13.7l2.428 2.3h1.796l2.428-2.3L21 18.938V19H3zm18-2.784V8.325l-4.219 3.997L21 16.216z"
+                                          ></path>
+                                        </svg>{" "}
+                                        <span style={{ marginLeft: "6px" }}>
+                                          Regular · peektipss
+                                        </span>
                                       </p>
-                                      <p className="largeid">
-                                        Sent <b>{formatDate(item?.sendtime)}</b>{" "}
-                                        by you
+                                      <p
+                                        style={{ fontSize: "12px" }}
+                                        className="largeid"
+                                      >
+                                        Last Edit{" "}
+                                        <span>
+                                          {formatDate(item?.sendtime)}
+                                        </span>{" "}
+                                        by
+                                        <br />
+                                        usama ahmad
                                       </p>
                                     </div>
                                     <div className="draftnewuilder">
@@ -1412,47 +1452,69 @@ const AllCampaings = () => {
                                         style={{
                                           backgroundColor: "#D8EACC",
                                           fontWeight: "400",
+                                          fontSize: "13px",
                                           color: "#004e56",
+                                          padding: "0px 8px",
                                         }}
                                       >
                                         Sent
                                       </p>
+                                      <br />
+                                      <span style={{ fontSize: "12px" }}>
+                                        Mon June 3, 2024 4:51 pm
+                                      </span>
                                     </div>
                                     <div
                                       style={{
                                         display: "flex",
                                         flexDirection: "column",
+                                        fontSize: "12px",
+                                        marginLeft: "45px",
                                       }}
                                     >
-                                      <span>selani media</span>
+                                      <span style={{ fontWeight: "500" }}>
+                                        selani media
+                                      </span>
                                       <span>11 recipients</span>{" "}
                                     </div>
                                     <div
-                                      style={{ marginLeft: "105px" }}
+                                      style={{ marginLeft: "100px" }}
                                       className="clickonpend"
                                     >
                                       <div>
-                                        <div className="oneone">
+                                        <div
+                                          style={{ fontSize: "12px" }}
+                                          className="oneone"
+                                        >
                                           {item?.vistitPercentage}%
                                         </div>
                                         <div className="two">
                                           {item?.visits}
                                         </div>
-                                        <div>opened</div>
+                                        <div style={{ fontSize: "12px" }}>
+                                          Opened
+                                        </div>
                                       </div>
                                       <div>
-                                        <div className="oneone">
+                                        <div
+                                          style={{ fontSize: "12px" }}
+                                          className="oneone"
+                                        >
                                           {item?.clickPercentage}%
                                         </div>
                                         <div className="two">
                                           {item?.clicks}
                                         </div>
-                                        <div>clicked</div>
+                                        <div style={{ fontSize: "12px" }}>
+                                          Clicked
+                                        </div>
                                       </div>
                                     </div>
                                     <div>
                                       <button
-                                        onClick={() => navigate(item._id)}
+                                        onClick={() =>
+                                          navigate(`/allcompaings/${item._id}`)
+                                        }
                                       >
                                         View Report
                                       </button>
