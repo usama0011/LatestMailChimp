@@ -13,6 +13,7 @@ import campaignsRouter from "./csvroutes/largemodel.js";
 const app = express();
 dotenv.config();
 
+// Connect to MongoDB
 try {
   await mongoose.connect(
     "mongodb+srv://abdulmoiz:abdulmoiz@cluster0.zwtqr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -20,17 +21,18 @@ try {
   console.log("Database Connection Successfully!!");
 } catch (error) {
   console.error("Error connecting to MongoDB:", error.message);
-  process.exit(1); // Exit the process if unable to connect to MongoDB
+  process.exit(1);
 }
-// Allow specific origin
-// const corsOptions = {
-//   origin: "http://localhost:5173/",
-//   methods: "GET,POST,PUT,DELETE,OPTIONS",
-//   allowedHeaders: "Content-Type,Authorization",
-// };
-// app.use(cors(corsOptions));
-// app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
-app.use(cors());
+
+// Set CORS options to allow the client URL
+const corsOptions = {
+  origin: "https://latest-mail-chimp-client.vercel.app", // Your client URL
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -48,7 +50,6 @@ app.use("/api/contacts", contactRoutes);
 app.use("/api/largecampaigns", campaignsRouter);
 
 // Error handling middleware
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error("Error:", err.stack);
   res
@@ -58,7 +59,6 @@ app.use((err, req, res, next) => {
 
 // Start the server
 const PORT = process.env.PORT || 3001;
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
