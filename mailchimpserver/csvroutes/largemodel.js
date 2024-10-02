@@ -1,18 +1,22 @@
-// routes/campaigns.js
 import express from "express";
 import multer from "multer";
 import csv from "csv-parser";
-import fs from "fs";
+import { Readable } from "stream"; // Import Readable for stream processing
 import LargeCampaign from "../models/LargeModel.js"; // Adjust the path based on your project structure
 
 const router = express.Router();
-const upload = multer({ dest: "uploads/" }); // Temporary storage for uploaded files
+
+// Use memory storage to avoid using the file system
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Route to upload CSV
 router.post("/upload", upload.single("file"), (req, res) => {
   const results = [];
 
-  fs.createReadStream(req.file.path)
+  // Create a readable stream from the buffer
+  const stream = Readable.from(req.file.buffer.toString());
+
+  stream
     .pipe(csv())
     .on("data", (data) => results.push(data))
     .on("end", async () => {
@@ -26,11 +30,13 @@ router.post("/upload", upload.single("file"), (req, res) => {
         res
           .status(500)
           .json({ message: "Error saving data to the database", error });
-      } finally {
-        fs.unlinkSync(req.file.path); // Remove the temporary file
       }
+    })
+    .on("error", (error) => {
+      res.status(500).json({ message: "Error processing CSV data", error });
     });
 });
+
 // Route to view all data
 router.get("/view", async (req, res) => {
   try {
@@ -59,4 +65,5 @@ router.get("/view/:id", async (req, res) => {
       .json({ message: "Error retrieving campaign from the database", error });
   }
 });
+
 export default router;

@@ -26,10 +26,11 @@ try {
 
 // Set CORS options to allow the client URL
 const corsOptions = {
-  origin: "https://latest-mail-chimp-client.vercel.app", // Your client URL
+  origin: "https://latest-mail-chimp-client.vercel.app", // Allow your frontend origin
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
 };
+
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
 

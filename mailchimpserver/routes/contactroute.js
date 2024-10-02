@@ -3,7 +3,7 @@ import express from "express";
 import multer from "multer";
 import csv from "csv-parser";
 import Contact from "../models/contactmodel.js";
-import { Stream } from "stream";
+import { Readable } from "stream"; // Import Readable for stream handling
 
 const router = express.Router();
 
@@ -22,35 +22,45 @@ router.post("/uploadContacts", upload.single("file"), async (req, res) => {
 
     const results = [];
     const fileBuffer = req.file.buffer.toString("utf8");
-    const readableStream = Stream.Readable.from(fileBuffer.split("\n"));
-    const csvParser = csv();
+    const readableStream = Readable.from(fileBuffer.split("\n"));
 
     await new Promise((resolve, reject) => {
       readableStream
-        .pipe(csvParser)
+        .pipe(csv())
         .on("data", (data) => {
-          // Modify data as needed (e.g., parsing numeric fields)
-          results.push({
-            emailaddress: data.emailaddress,
-            firstname: data.firstname,
-            lastname: data.lastname,
-            address: data.address,
-            phonenumber: data.phonenumber,
-            birthday: data.birthday,
-            tags: data.tags,
-            emailmarkting: data.emailmarkting,
-            source: data.source,
-            contactrating: data.contactrating,
-          });
+          // Ensure all necessary fields are present before pushing to results
+          if (data.emailaddress && data.firstname && data.lastname) {
+            results.push({
+              emailaddress: data.emailaddress,
+              firstname: data.firstname,
+              lastname: data.lastname,
+              address: data.address || "", // Default to empty string if not provided
+              phonenumber: data.phonenumber || "",
+              birthday: data.birthday || "",
+              tags: data.tags || "",
+              emailmarkting: data.emailmarkting || "",
+              source: data.source || "",
+              contactrating: data.contactrating || "",
+            });
+          }
         })
         .on("end", resolve)
-        .on("error", reject);
+        .on("error", (error) => {
+          console.error("Error parsing CSV:", error.message);
+          reject(error);
+        });
     });
 
-    console.log("Inserting contacts:", results);
-
     // Insert the parsed data into the MongoDB collection
-    await Contact.insertMany(results);
+    if (results.length > 0) {
+      console.log("Inserting contacts:", results);
+      await Contact.insertMany(results);
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "No valid contacts found in the uploaded file.",
+      });
+    }
 
     res.status(200).json({
       success: true,
@@ -65,6 +75,7 @@ router.post("/uploadContacts", upload.single("file"), async (req, res) => {
     });
   }
 });
+
 // Route to get all contacts
 router.get("/getAllContacts", async (req, res) => {
   try {
@@ -82,4 +93,5 @@ router.get("/getAllContacts", async (req, res) => {
     });
   }
 });
+
 export default router;
