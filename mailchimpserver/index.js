@@ -23,14 +23,14 @@ try {
   process.exit(1); // Exit the process if unable to connect to MongoDB
 }
 // Allow specific origin
-const corsOptions = {
-  origin: "http://localhost:5173",
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type,Authorization",
-};
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
-
+// const corsOptions = {
+//   origin: "http://localhost:5173/",
+//   methods: "GET,POST,PUT,DELETE,OPTIONS",
+//   allowedHeaders: "Content-Type,Authorization",
+// };
+// app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions)); // Handle preflight requests for all routes
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
