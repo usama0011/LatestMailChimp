@@ -32,7 +32,7 @@ const UploadLargeData = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/largecampaigns/upload",
+        "https://latest-mail-chimp-server.vercel.app/api/largecampaigns/upload",
         formData,
         {
           headers: {

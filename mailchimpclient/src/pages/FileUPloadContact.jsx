@@ -34,7 +34,7 @@ const FileUploadContact = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/contacts/uploadContacts", // Replace with your API URL
+        "https://latest-mail-chimp-server.vercel.app/api/contacts/uploadContacts", // Replace with your API URL
         formData,
         {
           headers: {
