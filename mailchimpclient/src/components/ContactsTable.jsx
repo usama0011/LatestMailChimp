@@ -51,7 +51,7 @@ const TableComponent = () => {
     const fetchContacts = async () => {
       try {
         const response = await axios.get(
-          "https://latest-mail-chimp-server.vercel.app/api/contacts/getAllContacts"
+          "http://localhost:3001/api/contacts/getAllContacts"
         );
         const fetchedContacts = response.data.data.map((contact) => ({
           key: contact._id,

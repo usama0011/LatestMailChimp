@@ -31,5 +31,32 @@ router.post("/upload", upload.single("file"), (req, res) => {
       }
     });
 });
+// Route to view all data
+router.get("/view", async (req, res) => {
+  try {
+    const campaigns = await LargeCampaign.find({});
+    res.status(200).json(campaigns);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error retrieving data from the database", error });
+  }
+});
 
+// Route to view a single campaign by ID
+router.get("/view/:id", async (req, res) => {
+  const { id } = req.params; // Extract ID from request parameters
+
+  try {
+    const campaign = await LargeCampaign.findById(id);
+    if (!campaign) {
+      return res.status(404).json({ message: "Campaign not found" });
+    }
+    res.status(200).json(campaign);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error retrieving campaign from the database", error });
+  }
+});
 export default router;

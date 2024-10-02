@@ -19,6 +19,10 @@ const HidePages = () => {
         <button onClick={() => navigate("/myreports")}>View All Reports</button>
         <button onClick={() => navigate("/viewfroms")}>View Froms</button>
         <button onClick={() => navigate("/from")}>Add From</button>
+        <button onClick={() => navigate("/uploadlargedta")}>
+          {" "}
+          Upload All Campaigns
+        </button>
       </div>
     </div>
   );

@@ -144,7 +144,7 @@ html {
   --bg-interactive-color: rgba(0, 124, 137, 0.1);
   --bg-inverted-color: var(--interactive-color);
   --text-primary-color: #241c15;
-  --text-secondary-color: rgba(36, 28, 21, 0.65);
+  --text-secondary-color: #017b89;
   --text-inverted-color: var(--bg-lvl-1-color);
   --text-headline-primary-color: var(--brand-peppercorn);
   --text-success-color: #008547;
@@ -1879,7 +1879,7 @@ h3 {
   max-height: 72px;
   height: 24px;
   width: 24px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89;
 }
 
 .copy-3Y9AB .feedbackIcon-2qEAZ {
@@ -3258,7 +3258,7 @@ h4 {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89;
 }
 
 .spacing2-3-fWQ > *,
@@ -4778,7 +4778,7 @@ span {
   max-height: 72px;
   height: 24px;
   width: 24px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89;
 }
 
 .wink-icon {
@@ -4788,7 +4788,7 @@ span {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89;
   display: inline-block;
 }
 
@@ -5401,7 +5401,7 @@ button.triggerButton-3JwWK .dropdownLabel-3HasS {
   max-height: 72px;
   height: 24px;
   width: 24px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89;
 }
 
 .wink-icon {
@@ -5411,7 +5411,7 @@ button.triggerButton-3JwWK .dropdownLabel-3HasS {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89;
   display: inline-block;
 }
 
@@ -5552,7 +5552,7 @@ span {
 }
 
 .root-TXRyV .indicator-1Co1h svg {
-  fill: var(--interactive-color);
+  fill: #017b89;
 }
 
 .selectInline-3cDyn,
@@ -5802,7 +5802,7 @@ p {
   max-height: 72px;
   height: 24px;
   width: 24px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89;
 }
 
 .wink-icon {
@@ -5812,7 +5812,7 @@ p {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89;
   display: inline-block;
 }
 
@@ -6206,7 +6206,7 @@ label {
   max-height: 72px;
   height: 24px;
   width: 24px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89;
 }
 
 .wink-icon {
@@ -6216,7 +6216,7 @@ label {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89;
   display: inline-block;
 }
 
@@ -6410,7 +6410,7 @@ select {
 }
 
 .root-TXRyV .indicator-1Co1h svg {
-  fill: var(--interactive-color);
+  fill: #017b89 !important;
 }
 
 .toggle-2Rjco,
@@ -6608,7 +6608,7 @@ wink-icon {
   max-height: 72px;
   height: 22px;
   width: 22px;
-  fill: rgba(36, 28, 21, 0.65);
+  fill: #017b89 !important;
 }
 
 .wink-icon {
@@ -6618,7 +6618,7 @@ wink-icon {
   max-height: var(--icon-max-size, calc(7.2rem * var(--font-ratio)));
   height: var(--icon-size, calc(2.4rem * var(--font-ratio)));
   width: var(--icon-size, calc(2.4rem * var(--font-ratio)));
-  fill: currentColor;
+  fill: #017b89 !important;
   display: inline-block;
 }
 

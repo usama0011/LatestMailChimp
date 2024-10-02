@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Reports.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const Reports = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Reports = () => {
   };
   useEffect(() => {
     axios
-      .get("https://latest-mail-chimp-server.vercel.app/api/reports")
+      .get("http://localhost:3001/api/largecampaigns/view")
       .then((response) => {
         setReports(response.data);
         setLoading(false);
@@ -173,10 +174,14 @@ const Reports = () => {
                       <ul className="stack-1qp4V spacing4-1xt6w navItems-1Kfmk minHeightNav-2mej_ snipcss0-8-55-56">
                         <li className="createItem-1mIzO snipcss0-9-56-57">
                           <Link
+                            style={{ border: "1px solid #017b89" }}
                             className="root-sBgFt container-3-bH7 secondary-1_P2K createButton-1NK_y snipcss0-10-57-58"
                             to="/newcomaping"
                           >
-                            <span className="temporarySpan-2iF2p snipcss0-11-58-59">
+                            <span
+                              style={{ fontWeight: "500", color: "#017b89" }}
+                              className="temporarySpan-2iF2p snipcss0-11-58-59"
+                            >
                               <span className="createIcon-qJ3Qk snipcss0-12-59-60"></span>
                               Create
                             </span>
@@ -980,9 +985,7 @@ const Reports = () => {
                   data-dojo-attach-point="switcherContainer"
                   class="margin-bottom--lv4"
                 >
-                  <p data-dojo-attach-point="selectLabel" class="ddkjsldfj">
-                    All audiences
-                  </p>
+                  <p data-dojo-attach-point="selectLabel" class="ddkjsldfj"></p>
                 </div>
 
                 <div class="">
@@ -1022,7 +1025,10 @@ const Reports = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mainpareonecontainer">
+                <div
+                  style={{ marginTop: "50px" }}
+                  className="mainpareonecontainer"
+                >
                   <div style={{ display: "flex" }}>
                     <div className="mymy" style={{ minWidth: "200px" }}>
                       <div
@@ -1237,70 +1243,161 @@ const Reports = () => {
                         </ul>
                       </div>
                     </div>
+
                     <div className="comapingdetaissl">
-                      <span>
-                        {formattedDate} ({reports?.length})
-                      </span>
-                      <hr />
                       {loading
                         ? "Loading..."
                         : reports?.map((item) => (
                             <>
                               <div className="comapingdetail">
-                                <div>
-                                  <input type="checkbox" name="" id="" />
+                                <div style={{ display: "flex" }}>
+                                  <div class="root-1olwd checkbox-2UQgU snipcss0-2-2-3">
+                                    <input
+                                      style={{
+                                        marginRight: "10px",
+                                        marginTop: "5px",
+                                      }}
+                                      class="input-2v40B noMargin-2qkhq snipcss0-3-3-4"
+                                      id="mc:46"
+                                      type="checkbox"
+                                      indeterminate="false"
+                                      aria-checked="false"
+                                      tabindex="0"
+                                    />
+                                    <div class="text-vFMr3 snipcss0-3-3-5">
+                                      <label
+                                        id="mc:47"
+                                        for="mc:46"
+                                        class="wink-visually-hidden snipcss0-4-5-6"
+                                      >
+                                        Select all 25 on page
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <svg
+                                    style={{ marginRight: "10px" }}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                    class="wink-icon detailIcon-1_cym snipcss-kXU9S"
+                                    data-testid="regular-icon"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zM3 5h18v.57L12.101 14h-.203L3 5.57V5zm0 3.325v7.891l4.219-3.894L3 8.325zM3 19v-.062L8.674 13.7l2.428 2.3h1.796l2.428-2.3L21 18.938V19H3zm18-2.784V8.325l-4.219 3.997L21 16.216z"
+                                    ></path>
+                                  </svg>
                                 </div>
                                 <div className="emailsection">
                                   {/* icon is here  */}
-                                  <p className="mail">{item?.comapingemail}</p>
-                                  <p className="regularemail">
-                                    Regular Next Web Lines
+                                  <p
+                                    className="mail"
+                                    style={{ fontWeight: 500 }}
+                                  >
+                                    {item?.campaignName}
                                   </p>
-                                  <p className="largeid">
-                                    Sent <b>{item?.sendtime}</b>
-                                    <br />
-                                    to {item?.recipients} recipients by you
+                                  <p
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                    }}
+                                    className="regularemail"
+                                  >
+                                    {" "}
+                                    <span style={{ marginLeft: "6px" }}>
+                                      {item?.campaignType}
+                                    </span>
                                   </p>
+                                  <p
+                                    style={{ fontSize: "14px" }}
+                                    className="largeid"
+                                  >
+                                    Sent{" "}
+                                    <span style={{ fontWeight: 500 }}>
+                                      {item?.sendTime} am
+                                    </span>{" "}
+                                    to <br />
+                                    {item?.audienceRecipients} by you
+                                  </p>
+                                  <span
+                                    style={{ fontSize: "12px", color: "gray" }}
+                                  >
+                                    Edited {item?.lastEditDate} am by you
+                                  </span>
                                 </div>
-
                                 <div className="draftnewuilder">
-                                  <p style={{ backgroundColor: "#d8eacc" }}>
+                                  <p
+                                    style={{
+                                      backgroundColor: "#D8EACC",
+                                      fontWeight: "400",
+                                      fontSize: "13px",
+                                      color: "#004e56",
+                                      padding: "0px 8px",
+                                    }}
+                                  >
                                     Sent
                                   </p>
                                   <p>New Builder</p>
+                                  <br />
                                 </div>
-                                <div className="clickonpend">
-                                  <div>
-                                    <div className="oneone">
-                                      {item?.openedpercentage}%
-                                    </div>
-                                    <div className="two">{item?.opened}</div>
-                                    <div>opened</div>
-                                  </div>
-                                  <div>
-                                    <div className="oneone">
-                                      {item?.clickpercentge}%
-                                    </div>
-                                    <div className="two">{item?.clicked}</div>
-                                    <div>clicked</div>
-                                  </div>
-                                </div>
+
                                 <div
-                                  onClick={() => handleviewreport(item._id)}
-                                  style={{ width: "150px" }}
-                                  className="reporseditcele"
+                                  style={{ marginLeft: "0px" }}
+                                  className="clickonpend"
                                 >
-                                  <p>View Reports</p>
-                                  <p>
-                                    <svg
-                                      className="arrodddd"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 512 512"
+                                  <div>
+                                    <div
+                                      style={{
+                                        fontSize: "14px",
+                                        fontWeight: "500",
+                                      }}
+                                      className="oneone"
                                     >
-                                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                    </svg>
-                                  </p>
+                                      {item?.openedPercentage}%
+                                    </div>
+                                    <div
+                                      className="two"
+                                      style={{ fontSize: "14px" }}
+                                    >
+                                      {item?.opened}
+                                    </div>
+                                    <div style={{ fontSize: "14px" }}>
+                                      Opened
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div
+                                      style={{
+                                        fontSize: "14px",
+                                        fontWeight: "500",
+                                      }}
+                                      className="oneone"
+                                    >
+                                      {item?.clickedPercentage}%
+                                    </div>
+                                    <div
+                                      className="two"
+                                      style={{ fontSize: "14px" }}
+                                    >
+                                      {item?.clicks}
+                                    </div>
+                                    <div style={{ fontSize: "14px" }}>
+                                      Clicked
+                                    </div>
+                                  </div>
                                 </div>
+                                <div style={{ marginLeft: "-50px" }}>
+                                  <button
+                                    onClick={() =>
+                                      navigate(`/allcompaings/${item._id}`)
+                                    }
+                                  >
+                                    View Report <span></span>
+                                  </button>
+                                </div>
+                                {/* Edit */}
                               </div>
                               <hr />
                             </>

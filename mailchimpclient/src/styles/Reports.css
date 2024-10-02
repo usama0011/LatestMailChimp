@@ -8,6 +8,13 @@
   cursor: pointer;
 }
 
-.reporseditcele>p {
+.reporseditcele > p {
   font-size: 15px;
+}
+
+.chvroddd {
+  color: black;
+  width: 16px;
+  height: 16px;
+  margin-top: 22px;
 }

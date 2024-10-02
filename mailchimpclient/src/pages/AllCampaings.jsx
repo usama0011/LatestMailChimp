@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/AllCompaings.css";
 import axios from "axios";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 const AllCampaings = () => {
   const [allcomapings, setAllComapings] = useState([]);
   const [currentscreen, setCurrentScreen] = useState("list");
@@ -16,7 +17,7 @@ const AllCampaings = () => {
         setLoading(true);
         //https://latest-mail-chimp-server.vercel.app/
         const allComaingsdata = await axios.get(
-          "https://latest-mail-chimp-server.vercel.app/api/newcompaing"
+          "https://latest-mail-chimp-server.vercel.app/api/largecampaigns/view"
         );
         setAllComapings(allComaingsdata.data);
         setLoading(false);
@@ -35,7 +36,7 @@ const AllCampaings = () => {
       try {
         setLoading(true);
         const allComaingsdata = await axios.get(
-          "https://latest-mail-chimp-server.vercel.app/api/newcompaing"
+          "http://localhost:3001/api/largecampaigns/view/"
         );
         setAllComapings(allComaingsdata.data);
         setLoading(false);
@@ -1343,6 +1344,7 @@ const AllCampaings = () => {
                         </th>
 
                         <th
+                          style={{ marginLeft: "-15px" }}
                           scope="col"
                           class="statusContainerV2-2k0I- snipcss0-1-1-11"
                         >
@@ -1407,7 +1409,7 @@ const AllCampaings = () => {
                                         className="mail"
                                         style={{ fontWeight: 500 }}
                                       >
-                                        {item?.comapingemail}
+                                        {item?.campaignName}
                                       </p>
                                       <p
                                         style={{
@@ -1431,7 +1433,7 @@ const AllCampaings = () => {
                                           ></path>
                                         </svg>{" "}
                                         <span style={{ marginLeft: "6px" }}>
-                                          Regular · peektipss
+                                          {item?.campaignType}
                                         </span>
                                       </p>
                                       <p
@@ -1439,12 +1441,9 @@ const AllCampaings = () => {
                                         className="largeid"
                                       >
                                         Last Edit{" "}
-                                        <span>
-                                          {formatDate(item?.sendtime)}
-                                        </span>{" "}
-                                        by
+                                        <span>{item?.lastEditDate}</span> by
                                         <br />
-                                        usama ahmad
+                                        {item?.editedByUsername}
                                       </p>
                                     </div>
                                     <div className="draftnewuilder">
@@ -1461,7 +1460,7 @@ const AllCampaings = () => {
                                       </p>
                                       <br />
                                       <span style={{ fontSize: "12px" }}>
-                                        Mon June 3, 2024 4:51 pm
+                                        {item?.sendTime}
                                       </span>
                                     </div>
                                     <div
@@ -1473,9 +1472,9 @@ const AllCampaings = () => {
                                       }}
                                     >
                                       <span style={{ fontWeight: "500" }}>
-                                        selani media
+                                        {item?.audienceName}
                                       </span>
-                                      <span>11 recipients</span>{" "}
+                                      <span>{item?.audienceRecipients}</span>{" "}
                                     </div>
                                     <div
                                       style={{ marginLeft: "100px" }}
@@ -1483,13 +1482,19 @@ const AllCampaings = () => {
                                     >
                                       <div>
                                         <div
-                                          style={{ fontSize: "12px" }}
+                                          style={{
+                                            fontSize: "12px",
+                                            fontWeight: "500",
+                                          }}
                                           className="oneone"
                                         >
-                                          {item?.vistitPercentage}%
+                                          {item?.openedPercentage}%
                                         </div>
-                                        <div className="two">
-                                          {item?.visits}
+                                        <div
+                                          className="two"
+                                          style={{ fontSize: "12px" }}
+                                        >
+                                          {item?.opened}
                                         </div>
                                         <div style={{ fontSize: "12px" }}>
                                           Opened
@@ -1497,12 +1502,18 @@ const AllCampaings = () => {
                                       </div>
                                       <div>
                                         <div
-                                          style={{ fontSize: "12px" }}
+                                          style={{
+                                            fontSize: "12px",
+                                            fontWeight: "500",
+                                          }}
                                           className="oneone"
                                         >
-                                          {item?.clickPercentage}%
+                                          {item?.clickedPercentage}%
                                         </div>
-                                        <div className="two">
+                                        <div
+                                          className="two"
+                                          style={{ fontSize: "12px" }}
+                                        >
                                           {item?.clicks}
                                         </div>
                                         <div style={{ fontSize: "12px" }}>
@@ -1510,14 +1521,50 @@ const AllCampaings = () => {
                                         </div>
                                       </div>
                                     </div>
-                                    <div>
+                                    <div
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                      }}
+                                    >
                                       <button
+                                        style={{
+                                          backgroundColor: "unset",
+                                          border: "1px solid #017b89",
+                                          color: "#017b89",
+                                          borderRadius: "0",
+                                          height: "50px",
+                                          borderTopLeftRadius: "30px",
+                                          margin: "0px",
+                                          borderBottomLeftRadius: "30px",
+                                        }}
                                         onClick={() =>
                                           navigate(`/allcompaings/${item._id}`)
                                         }
                                       >
                                         View Report
                                       </button>
+                                      <div
+                                        style={{
+                                          border: "1px solid #017b89",
+                                          height: "50px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
+                                          width: "50px",
+                                          borderTopRightRadius: "30px",
+                                          borderBottomRightRadius: "30px",
+                                        }}
+                                      >
+                                        <ChevronDownIcon
+                                          width={18}
+                                          height={18}
+                                          style={{
+                                            color: "#017b89",
+                                            cursor: "pointer",
+                                          }}
+                                        />
+                                      </div>
                                     </div>
                                     {/* Edit */}
                                   </div>

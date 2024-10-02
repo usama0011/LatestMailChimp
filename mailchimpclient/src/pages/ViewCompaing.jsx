@@ -13,7 +13,7 @@ const ViewCompaing = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `https://latest-mail-chimp-server.vercel.app/api/reports/${id}`
+          `http://localhost:3001/api/largecampaigns/view/${id}`
         );
         setSingleReport(response.data);
         setLoading(false);
@@ -947,7 +947,6 @@ const ViewCompaing = () => {
                 <div className="lastUnit">
                   <h1>{singlereport?.subject}</h1>{" "}
                 </div>
-                <h2 className="paragikjd">New Testing</h2>
                 <div
                   data-dojo-attach-point="switcherContainer"
                   class="margin-bottom--lv4"
@@ -1144,7 +1143,7 @@ const ViewCompaing = () => {
                             {" "}
                             <span class="title fwb ">Audience:</span>{" "}
                             <span class="description">
-                              {singlereport?.Audience}{" "}
+                              {singlereport?.audienceRecipients}{" "}
                             </span>{" "}
                           </li>{" "}
                           <li>
@@ -1171,7 +1170,7 @@ const ViewCompaing = () => {
                             {" "}
                             <span class="title fwb"> Delivered: </span>{" "}
                             <span class="description">
-                              Thu, Jan 25, 2024 11:15 am
+                              {singlereport?.deliveredDate}
                             </span>{" "}
                           </li>{" "}
                           <li class="hide-print">
@@ -1248,7 +1247,7 @@ const ViewCompaing = () => {
                             href="https://hayzeltech.com/mailing/reports/"
                             title="View"
                           >
-                            {singlereport?.clicked}
+                            {singlereport?.clicks}
                           </a>
                         </h3>{" "}
                         <p>Clicked</p>{" "}
@@ -1294,13 +1293,16 @@ const ViewCompaing = () => {
                             <span>Successful deliveries</span>{" "}
                             <span class="fwb">
                               <span data-mc-el="deliverCountStat">
-                                <b>{singlereport?.Successfuldeliveries}</b>
+                                <b>{singlereport?.successfulDeliveriesCount}</b>
                               </span>{" "}
                               <span
                                 data-mc-el="deliverRateStat"
                                 class="percent-spacer alignr dim-el fwn"
                               >
-                                99.7%
+                                <span>
+                                  {singlereport?.successfulDeliveriesPercentage}
+                                  %
+                                </span>
                               </span>
                             </span>{" "}
                           </li>{" "}
@@ -1313,7 +1315,7 @@ const ViewCompaing = () => {
                                 href="https://us9.admin.mailchimp.com/reports/activity/opened?id=6150701&amp;_ga=2.41225579.810457447.1706014327-1066594206.1700086536"
                                 title="View"
                               >
-                                {singlereport?.Totalopens}
+                                {singlereport?.opened}
                               </a>{" "}
                             </span>{" "}
                           </li>{" "}
@@ -1321,14 +1323,16 @@ const ViewCompaing = () => {
                             {" "}
                             <span>Last opened</span>
                             <span data-mc-el="lastOpenDate">
-                              {singlereport?.Lastopened}
+                              {singlereport?.lastOpened}
                             </span>
                           </li>{" "}
                           <li>
                             {" "}
                             <span>Forwarded</span>{" "}
                             <span class="fwb">
-                              <span data-mc-el="forwardCountStat">0</span>
+                              <span data-mc-el="forwardCountStat">
+                                {singlereport?.forwarded}
+                              </span>
                             </span>{" "}
                           </li>{" "}
                           <li
@@ -1354,7 +1358,7 @@ const ViewCompaing = () => {
                             <span>Clicks per unique opens</span>{" "}
                             <span class="fwb">
                               <span data-mc-el="openClickRateStat">
-                                <b>{singlereport?.Clicksperuniqueopens}%</b>
+                                <b>{singlereport?.clickPerUniqueOpens}%</b>
                               </span>
                             </span>{" "}
                           </li>{" "}
@@ -1363,7 +1367,7 @@ const ViewCompaing = () => {
                             <span>Total clicks</span>{" "}
                             <span class="fwb">
                               <span data-mc-stat="clickCountStat">
-                                <b>223</b>
+                                {singlereport?.clicks}
                               </span>
                             </span>{" "}
                           </li>{" "}
@@ -1371,7 +1375,7 @@ const ViewCompaing = () => {
                             {" "}
                             <span>Last clicked</span>
                             <span data-mc-el="lastClickDate">
-                              {singlereport?.lastCliked}
+                              {singlereport?.lastClicked}
                             </span>
                           </li>{" "}
                           <li>
@@ -1379,7 +1383,7 @@ const ViewCompaing = () => {
                             <span>Abuse reports</span>{" "}
                             <span class="fwb">
                               <span data-mc-el="abuseCountStat">
-                                <span>{singlereport?.Abusereports}</span>
+                                <span>{singlereport?.abuseReports}</span>
                               </span>
                             </span>{" "}
                           </li>{" "}
@@ -1396,7 +1400,7 @@ const ViewCompaing = () => {
                             href="https://hayzeltech.com/mailing/reports/"
                             title="View"
                           >
-                            {singlereport?.Orders}
+                            {singlereport?.orders}
                           </a>{" "}
                         </h3>{" "}
                         <p>Orders</p>{" "}
@@ -1410,7 +1414,7 @@ const ViewCompaing = () => {
                             href="https://hayzeltech.com/mailing/reports/"
                             title="View"
                           >
-                            {singlereport?.Averageorderrevenue}$
+                            {singlereport?.averageOrderRevenue}$
                           </a>
                         </h3>{" "}
                         <p>Average order revenue</p>{" "}
@@ -1424,7 +1428,7 @@ const ViewCompaing = () => {
                             href="https://hayzeltech.com/mailing/reports/"
                             title="View"
                           >
-                            {singlereport?.Totalrevenue}$
+                            {singlereport?.totalRevenue}$
                           </a>
                         </h3>{" "}
                         <p>Total revenue</p>{" "}
@@ -3075,40 +3079,46 @@ const ViewCompaing = () => {
                                   {" "}
                                   <li class="selfclear">
                                     {" "}
-                                    <span class="float-right fwb">1</span>{" "}
+                                    <span class="float-right fwb">
+                                      {singlereport?.emailOneC}
+                                    </span>{" "}
                                     <span class="float-left">
                                       <a
                                         href="/reports/activity/activity?id=6741586&amp;e=395420428"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                       >
-                                        tayyab@selanimedia.xyz
+                                        {singlereport?.emailOne}
                                       </a>
                                     </span>{" "}
                                   </li>
                                   <li class="selfclear">
                                     {" "}
-                                    <span class="float-right fwb">1</span>{" "}
+                                    <span class="float-right fwb">
+                                      {singlereport?.emailOneC}
+                                    </span>{" "}
                                     <span class="float-left">
                                       <a
                                         href="/reports/activity/activity?id=6741586&amp;e=395420862"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                       >
-                                        pappyellison@gmail.com
+                                        {singlereport?.emailTwo}
                                       </a>
                                     </span>{" "}
                                   </li>
                                   <li class="selfclear">
                                     {" "}
-                                    <span class="float-right fwb">1</span>{" "}
+                                    <span class="float-right fwb">
+                                      {singlereport?.emailThreeC}
+                                    </span>{" "}
                                     <span class="float-left">
                                       <a
                                         href="/reports/activity/activity?id=6741586&amp;e=395420864"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                       >
-                                        joeram713@gmail.com
+                                        {singlereport?.emailThree}
                                       </a>
                                     </span>{" "}
                                   </li>{" "}
@@ -3128,360 +3138,9 @@ const ViewCompaing = () => {
                         </div>
                       </div>
                     </div>
-                    <h3 style={{ paddingLeft: "35px", paddingTop: "50px" }}>
+                    {/* <h3 style={{ paddingLeft: "35px", paddingTop: "50px" }}>
                       Predicted demographics
-                    </h3>
-                    <section class="section-137bm myssss">
-                      <div class="columns-1BJb1 singleColumn-3N8qb">
-                        <div class="column-21-zM">
-                          <section class="section-xAWB7">
-                            <div>
-                              <div class="splitColumn-14J8y">
-                                <div>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "space-between",
-                                    }}
-                                    className="uttonsdksjkf"
-                                  >
-                                    <h4>Gender</h4>
-                                    <div
-                                      className="recoptions"
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                      }}
-                                    >
-                                      <p
-                                        style={{
-                                          marginRight: "10px",
-                                          color: "#1b8a95",
-                                        }}
-                                      >
-                                        Recipients
-                                      </p>
-                                      <p>Opens</p>
-                                    </div>
-                                  </div>
-                                  <figure
-                                    style={{
-                                      display: "flex",
-                                      flexDirection: "column",
-                                      width: "100%",
-                                    }}
-                                    class="genderChartContainer-6pb1A"
-                                  >
-                                    <svg
-                                      version="1.1"
-                                      style={{
-                                        position: "absolute",
-                                        width: "404px",
-                                        height: "150px",
-                                      }}
-                                    >
-                                      <g>
-                                        {/* Female Circle */}
-                                        <path
-                                          d="M190.2945806790323,133.84711682419382 L187.36822584879036,148.5588960302423 A75,75,0,0,1,201.99999999999997,0 L201.99999999999997,15 A60,60,0,0,0,190.2945806790323,133.84711682419382 Z"
-                                          fill="#4f135e"
-                                          fillOpacity="1"
-                                          stroke="#FFFFFF"
-                                          strokeWidth="1"
-                                          strokeOpacity="0"
-                                          transform={`rotate(${femaleFill}, 202, 75)`} // Rotate based on fill ratio
-                                        />
-                                        {/* Male Circle */}
-                                        <path
-                                          d="M202,15 L202,0 A75,75,0,1,1,187.36822584879036,148.5588960302423 L190.2945806790323,133.84711682419382 A60,60,0,1,0,202,15 Z"
-                                          fill="#f97f50"
-                                          fillOpacity="1"
-                                          stroke="#FFFFFF"
-                                          strokeWidth="1"
-                                          strokeOpacity="0"
-                                          transform={`rotate(${maleFill}, 202, 75)`} // Rotate based on fill ratio
-                                        />
-                                      </g>
-                                    </svg>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <figcaption class="genderChartLegend-_3zq0">
-                                      <ul>
-                                        <li class="row-3JfVL">
-                                          <div class="clickArea-2gAoC targetwithCampaign-1QhY9">
-                                            <div class="container-3eYOU activeContainer-29_2d">
-                                              <div class="legendItem-37hMD color_1-2RDMV"></div>
-                                              <div class="content-3KolX">
-                                                <div class="rowContent-RedmX">
-                                                  <strong class="percentage-31XWx">
-                                                    {singlereport?.female}%
-                                                  </strong>
-                                                  <span class="label-3pIE0">
-                                                    Female
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="row-3JfVL">
-                                          <div class="clickArea-2gAoC targetwithCampaign-1QhY9">
-                                            <div class="container-3eYOU activeContainer-29_2d">
-                                              <div class="legendItem-37hMD color_2-6xahh"></div>
-                                              <div class="content-3KolX">
-                                                <div class="rowContent-RedmX">
-                                                  <strong class="percentage-31XWx">
-                                                    {singlereport?.male}%
-                                                  </strong>
-                                                  <span class="label-3pIE0">
-                                                    Male
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="row-3JfVL">
-                                          <div class="clickArea-2gAoC targetwithCampaign-1QhY9">
-                                            <div class="container-3eYOU">
-                                              <div class="legendItem-37hMD color_3-3LCa-"></div>
-                                              <div class="content-3KolX">
-                                                <div class="rowContent-RedmX">
-                                                  <strong class="percentage-31XWx">
-                                                    {
-                                                      singlereport?.otherIdentity
-                                                    }
-                                                    %
-                                                  </strong>
-                                                  <span class="label-3pIE0">
-                                                    Another Identity
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="row-3JfVL">
-                                          <div class="clickArea-2gAoC targetwithCampaign-1QhY9">
-                                            <div class="container-3eYOU activeContainer-29_2d">
-                                              <div class="legendItem-37hMD color_4-ifi9S"></div>
-                                              <div class="content-3KolX">
-                                                <div class="rowContent-RedmX">
-                                                  <strong class="percentage-31XWx">
-                                                    {singlereport?.unknow}%
-                                                  </strong>
-                                                  <span class="label-3pIE0">
-                                                    Unknown
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </figcaption>
-                                  </figure>
-                                </div>
-                                <div>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "space-between",
-                                    }}
-                                    className="uttonsdksjkf"
-                                  >
-                                    <h4>Age Range</h4>
-                                    <div
-                                      className="recoptions"
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                      }}
-                                    >
-                                      <p
-                                        style={{
-                                          marginRight: "10px",
-                                          color: "#1b8a95",
-                                        }}
-                                      >
-                                        Recipients
-                                      </p>
-                                      <p>Opens</p>
-                                    </div>
-                                  </div>
-                                  <div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">18-24</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-iiiGD"
-                                                id="style-iiiGD"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-ZQ5TY"
-                                                id="style-ZQ5TY"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              1.2%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">25-34</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-QKhy7"
-                                                id="style-QKhy7"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-UfwcV"
-                                                id="style-UfwcV"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              7.8%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">35-44</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-Zndi9"
-                                                id="style-Zndi9"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-7DQop"
-                                                id="style-7DQop"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              16.4%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">45-54</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-4h7Po"
-                                                id="style-4h7Po"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-7WoPe"
-                                                id="style-7WoPe"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              20.0%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">55-64</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-eyALK"
-                                                id="style-eyALK"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-Jbwh9"
-                                                id="style-Jbwh9"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              17.4%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row-13lP_">
-                                      <div class="clickArea-2gAoC targetwithCampaign-PGk0d">
-                                        <div class="container-3eYOU activeContainer-29_2d">
-                                          <span class="label-1rkn2">65+</span>
-                                          <div class="content-3KolX">
-                                            <ul
-                                              class="container-3aDrJ ageRangeChart-QceMY"
-                                              aria-hidden="true"
-                                            >
-                                              <li
-                                                class="section-2-yBP color_1-3idki style-XKQr4"
-                                                id="style-XKQr4"
-                                              ></li>
-                                              <li
-                                                class="section-2-yBP color_2-sim0Y style-nyQkf"
-                                                id="style-nyQkf"
-                                              ></li>
-                                              <li class="section-2-yBP fillerSection-2hKPY"></li>
-                                            </ul>
-                                            <strong class="percentage-J6FTc">
-                                              22.8%
-                                            </strong>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </div>
-                      </div>
-                    </section>
+                    </h3> */}
                     <br />
                     <h3 class="lastUnit size1of1">
                       Top locations by opens
@@ -5682,12 +5341,14 @@ const ViewCompaing = () => {
                                                 {" "}
                                                 <td class="track-url wordwrap">
                                                   <a
-                                                    href="https://dailytipsblog.net/solar-companies/"
+                                                    href="#"
                                                     target="_blank"
                                                     class="no-vip-filter"
                                                     rel="noopener noreferrer"
                                                   >
-                                                    https://dailytipsblog.net/solar-companies/
+                                                    {
+                                                      singlereport?.clickPerformanceLink
+                                                    }
                                                   </a>
                                                 </td>{" "}
                                                 <td class="track-stats alignr">
@@ -5699,7 +5360,9 @@ const ViewCompaing = () => {
                                                       onmouseup="ga('send', 'event', 'click performance', 'link details', 'clicks', {'dimension81':'6741586'})"
                                                     >
                                                       <span class="number">
-                                                        1
+                                                        {
+                                                          singlereport?.clickPerformanceCount
+                                                        }
                                                       </span>{" "}
                                                       <span class="alignr fwb margin--lv1 !margin-top-bottom--lv0 !margin-right--lv0">
                                                         (100.0%)
@@ -5873,7 +5536,7 @@ const ViewCompaing = () => {
                               href="https://hayzeltech.com/mailing/reports/"
                               title="View"
                             >
-                              {singlereport?.Orders}
+                              {singlereport?.orders}
                             </a>{" "}
                           </h3>{" "}
                           <p>Orders</p>{" "}
@@ -5887,7 +5550,7 @@ const ViewCompaing = () => {
                               href="https://hayzeltech.com/mailing/reports/"
                               title="View"
                             >
-                              {singlereport?.Averageorderrevenue}$
+                              {singlereport?.averageOrderRevenue}$
                             </a>
                           </h3>{" "}
                           <p>Average order revenue</p>{" "}
@@ -5901,7 +5564,7 @@ const ViewCompaing = () => {
                               href="https://hayzeltech.com/mailing/reports/"
                               title="View"
                             >
-                              {singlereport?.Totalrevenue}$
+                              {singlereport?.totalRevenue}$
                             </a>
                           </h3>{" "}
                           <p>Total revenue</p>{" "}
