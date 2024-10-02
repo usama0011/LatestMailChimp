@@ -16,7 +16,9 @@ const Reports = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/largecampaigns/view")
+      .get(
+        "https://latest-mail-chimp-server.vercel.app/api/largecampaigns/view"
+      )
       .then((response) => {
         setReports(response.data);
         setLoading(false);
