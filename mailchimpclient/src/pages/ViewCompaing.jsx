@@ -1657,7 +1657,7 @@ const ViewCompaing = () => {
                                 objectFit: "cover",
                                 backgroundSize: "cover",
                               }}
-                              src={singlereport?.chooseemailtemplate}
+                              src={singlereport?.campaignImage}
                               alt=""
                             />
                           </div>

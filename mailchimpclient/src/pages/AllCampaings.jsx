@@ -36,7 +36,7 @@ const AllCampaings = () => {
       try {
         setLoading(true);
         const allComaingsdata = await axios.get(
-          "http://localhost:3001/api/largecampaigns/view/"
+          "https://latest-mail-chimp-server.vercel.app/api/largecampaigns/view/"
         );
         setAllComapings(allComaingsdata.data);
         setLoading(false);

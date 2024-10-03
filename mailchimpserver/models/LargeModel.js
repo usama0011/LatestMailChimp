@@ -34,6 +34,7 @@ const EmailDomainPerformanceSchema = new Schema(
 const LargeCampaignSchema = new Schema(
   {
     campaignName: { type: String, required: false },
+    campaignImage: { type: String, required: false },
     campaignType: { type: String, required: false },
     lastEditDate: { type: String, required: false },
     editedByUsername: { type: String, required: false },
